@@ -48,6 +48,8 @@
 - **warp.md** - Warp терминал (MCP серверы, интеграции)
 - **claude-desktop.md** - Claude Desktop (MCP серверы)
 - **n8n.md** - n8n (workflows, credentials, интеграции)
+- **paddleocr.md** - PaddleOCR (Docker контейнер для OCR)
+- **tesseract-ocr.md** - Tesseract OCR (локальный OCR инструмент)
 
 ### `docs/mcp-servers.md`
 
