@@ -1,0 +1,146 @@
+# =============================================================================
+# MCP SERVERS FOR CONTINUE
+# =============================================================================
+# Converted from Cursor mcp.json format
+# MCP works only in Agent mode
+# Set env vars: GITHUB_PERSONAL_ACCESS_TOKEN, BRAVE_API_KEY (or replace below)
+#
+# DISABLED (errors):
+# - warp: Connection closed - verify path, build mcp-warp
+# - ssh: Connection closed - dist empty, run: npm run build in mcp-ssh
+# - n8n: resourceTemplates undefined - Continue/n8n incompatibility
+# =============================================================================
+
+name: MCP Servers
+version: 1.0.0
+schema: v1
+
+mcpServers:
+  # -------------------------------------------------------------------------
+  # Macuse - Mac app integration
+  # -------------------------------------------------------------------------
+  - name: macuse
+    command: /Applications/Macuse.app/Contents/MacOS/macuse
+    args:
+      - mcp
+    env: {}
+
+  # -------------------------------------------------------------------------
+  # GitHub - issues, projects, code
+  # Set GITHUB_PERSONAL_ACCESS_TOKEN in env or replace below
+  # -------------------------------------------------------------------------
+  - name: github
+    command: npx
+    args:
+      - -y
+      - "@modelcontextprotocol/server-github"
+    env:
+      GITHUB_PERSONAL_ACCESS_TOKEN: "YOUR_GITHUB_TOKEN_HERE"
+
+  # -------------------------------------------------------------------------
+  # Filesystem - file operations in /Users/mac
+  # -------------------------------------------------------------------------
+  - name: filesystem
+    command: npx
+    args:
+      - -y
+      - "@modelcontextprotocol/server-filesystem"
+      - /Users/mac
+    env: {}
+
+  # -------------------------------------------------------------------------
+  # Brave Search - web search
+  # Set BRAVE_API_KEY in env or replace below
+  # -------------------------------------------------------------------------
+  - name: brave-search
+    command: npx
+    args:
+      - -y
+      - "@modelcontextprotocol/server-brave-search"
+    env:
+      BRAVE_API_KEY: "YOUR_BRAVE_API_KEY_HERE"
+
+  # -------------------------------------------------------------------------
+  # Linear - project management (remote SSE)
+  # -------------------------------------------------------------------------
+  - name: linear
+    command: npx
+    args:
+      - -y
+      - mcp-remote
+      - "https://mcp.linear.app/sse"
+    env: {}
+
+  # -------------------------------------------------------------------------
+  # Bitrix24 Docs - Bitrix24 documentation (remote)
+  # -------------------------------------------------------------------------
+  - name: bitrix24-docs
+    command: npx
+    args:
+      - -y
+      - mcp-remote
+      - "https://mcp-dev.bitrix24.com/mcp"
+    env: {}
+
+  # -------------------------------------------------------------------------
+  # Warp - DISABLED: Connection closed
+  # Fix: 1) Verify path (use "My disk" or "Мой диск" per your locale)
+  #      2) Build: cd mcp-warp && npm run build
+  # Path under Google Drive kb_dev: vps/compose/mcp-warp/dist/index.js
+  # -------------------------------------------------------------------------
+  # - name: warp
+  #   command: node
+  #   args:
+  #     - "/Users/mac/Library/CloudStorage/GoogleDrive-5427611@gmail.com/My drive/00_BAZA ZNANIJ/kb_dev/vps/compose/mcp-warp/dist/index.js"
+  #   env:
+  #     WARP_API_KEY: "wk-1.59ba1aa3c633cca6a745ae07384c6b1a95614ed5d908c15d2c868127dca6ea90"
+
+  # -------------------------------------------------------------------------
+  # SSH - DISABLED: Connection closed
+  # Fix: dist/index.js missing. Build first: cd /Users/mac/Documents/vps/compose/mcp-ssh && npm run build
+  # Uncomment when built
+  # -------------------------------------------------------------------------
+  # - name: ssh
+  #   command: node
+  #   args:
+  #     - /Users/mac/Documents/vps/compose/mcp-ssh/dist/index.js
+  #   env:
+  #     SSH_HOST: "82.202.129.193"
+  #     SSH_PORT: "22"
+  #     SSH_USER: "roman"
+  #     SSH_PRIVATE_KEY_PATH: "/Users/mac/.ssh/mcp_n8n_ed25519"
+
+  # -------------------------------------------------------------------------
+  # n8n - DISABLED: resourceTemplates error (n8n MCP returns undefined)
+  # Continue expects resourceTemplates array. Known incompatibility.
+  # Use n8n MCP from Cursor (mcp.json) or Claude Desktop instead
+  # -------------------------------------------------------------------------
+  # - name: n8n
+  #   command: ssh
+  #   args:
+  #     - -i
+  #     - /Users/mac/.ssh/mcp_n8n_ed25519
+  #     - -o
+  #     - StrictHostKeyChecking=no
+  #     - -o
+  #     - UserKnownHostsFile=/dev/null
+  #     - roman@82.202.129.193
+  #     - docker
+  #     - exec
+  #     - -i
+  #     - mcp-n8n
+  #     - /usr/local/bin/node
+  #     - /app/build/index.js
+  #   env: {}
+
+  # -------------------------------------------------------------------------
+  # Context7 - library documentation (remote)
+  # -------------------------------------------------------------------------
+  - name: context7
+    command: npx
+    args:
+      - -y
+      - mcp-remote
+      - "https://mcp.context7.com/mcp"
+    env:
+      CONTEXT7_API_KEY: "ctx7sk-58e61df0-8bf1-40a2-83f9-e05540bdc726"
