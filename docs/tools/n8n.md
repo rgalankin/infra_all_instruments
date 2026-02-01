@@ -4,10 +4,15 @@ category: AI/автоматизации → workflow engine
 version: unknown
 status: active
 criticality: very_high
-updated: 2026-01-27
+updated: 2026-02-01
 ---
 
 # N8N
+
+> **Связанные документы:**
+> - [Основная инфраструктура](../../ВСЯ%20МОЯ%20ИНФРАСТРУКТУРА%20(для%20LLM).md)
+> - [Реестр нейросетей](./neural-networks.md) — модели для интеграции через Groq/OpenRouter
+> - [Claude Desktop](./claude-desktop.md) — MCP-n8n интеграция
 
 ## ОСНОВНАЯ ИНФОРМАЦИЯ
 

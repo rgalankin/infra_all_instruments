@@ -1,7 +1,7 @@
 ---
-title: ToolingRegistry_v1.1
+title: ToolingRegistry_v1.2
 status: active
-updated: 2026-01-23
+updated: 2026-02-01
 owner: Roman Galankin
 ---
 
@@ -342,6 +342,12 @@ owner: Roman Galankin
 
 # 4) AI И АВТОМАТИЗАЦИИ
 
+> **Полный реестр нейросетей:** см. [`docs/tools/neural-networks.md`](docs/tools/neural-networks.md)
+> - Все доступные модели Ollama (локальные и cloud)
+> - Бесплатные модели OpenRouter
+> - Оценки для русского языка, скорости, OCR
+> - Рекомендации по выбору модели под задачу
+
 ## 4.1 AI-СЛОЙ В IDE (ЯДРО)
 
 ### CONTINUE
@@ -392,6 +398,8 @@ owner: Roman Galankin
   - Работает как фоновый сервис на macOS
 
 #### УСТАНОВЛЕННЫЕ МОДЕЛИ В OLLAMA
+
+> Полный список всех доступных моделей (включая не установленные): [`docs/tools/neural-networks.md`](docs/tools/neural-networks.md)
 
 **1. qwen3:30b** (Q4_K_M, 30.5B параметров, ~18 GB)
 - Роль: максимальное качество для сложных задач
@@ -607,8 +615,9 @@ owner: Roman Galankin
 - Любое изменение инфраструктуры → запись в `docs/changes.md` (проектное правило уже есть)
 
 ## 8.2 ВЕРСИИ
-- v1.1 — текущая (после добавления macOS/Cursor/Continue/Ollama/GitHub и структуры IDE-слоя)
-- v1.2 — после закрытия пробелов по Shortcuts и blink.new (как минимум)
+- v1.2 — текущая (добавлен реестр нейросетей `docs/tools/neural-networks.md`)
+- v1.1 — после добавления macOS/Cursor/Continue/Ollama/GitHub и структуры IDE-слоя
+- v1.3 — после закрытия пробелов по Shortcuts и blink.new (как минимум)
 
 ---
 
@@ -621,6 +630,12 @@ owner: Roman Galankin
 
 # 10) ИСТОРИЯ ОБНОВЛЕНИЙ
 
+- **2026-02-01:** Создан отдельный реестр нейросетей `docs/tools/neural-networks.md`
+  - Добавлены все доступные модели Ollama (локальные и cloud)
+  - Добавлены бесплатные модели OpenRouter (15+ моделей)
+  - Добавлены оценки для русского языка, скорости, OCR
+  - Добавлены рекомендации по выбору модели под задачу
+  - Обновлены перекрёстные ссылки между документами
 - **2026-01-29:** Добавлены PaddleOCR и Tesseract OCR в раздел AI/OCR
 - **2026-01-29:** Обновлена информация об Ollama с полным списком установленных моделей (qwen3:30b, qwen2.5:3b, llama3.1:8b, llama3.2:latest, gpt-oss:20b, nomic-embed-text, qwen2.5-coder:1.5b)
 - **2026-01-29:** Добавлен Docker Desktop (macOS) в раздел контейнеризации

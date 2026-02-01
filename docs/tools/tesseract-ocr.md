@@ -4,10 +4,15 @@ category: AI → OCR / image processing
 version: unknown
 status: active
 criticality: medium
-updated: 2026-01-29
+updated: 2026-02-01
 ---
 
 # TESSERACT OCR
+
+> **Связанные документы:**
+> - [Реестр нейросетей](./neural-networks.md) — рекомендуемые модели для улучшения OCR
+> - [PaddleOCR](./paddleocr.md) — альтернативный OCR (лучше для русского)
+> - [Основная инфраструктура](../../ВСЯ%20МОЯ%20ИНФРАСТРУКТУРА%20(для%20LLM).md)
 
 ## ОСНОВНАЯ ИНФОРМАЦИЯ
 

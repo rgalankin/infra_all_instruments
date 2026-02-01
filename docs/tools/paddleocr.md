@@ -4,10 +4,15 @@ category: AI → OCR / image processing
 version: latest (Docker)
 status: active
 criticality: medium
-updated: 2026-01-29
+updated: 2026-02-01
 ---
 
 # PADDLEOCR
+
+> **Связанные документы:**
+> - [Реестр нейросетей](./neural-networks.md) — рекомендуемые модели для улучшения OCR
+> - [Tesseract OCR](./tesseract-ocr.md) — альтернативный OCR
+> - [Основная инфраструктура](../../ВСЯ%20МОЯ%20ИНФРАСТРУКТУРА%20(для%20LLM).md)
 
 ## ОСНОВНАЯ ИНФОРМАЦИЯ
 
