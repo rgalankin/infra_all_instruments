@@ -1,12 +1,20 @@
 ---
 id: 20260201200225
 title: ШАБЛОН ДЛЯ ДОКУМЕНТИРОВАНИЯ ИНСТРУМЕНТА
-status: active
+summary: >
+  Архивный шаблон карточки инструмента. Заменён шаблонами в templates/.
+type: spec
+status: archived
+tags: [docops/template, docops/archive]
 source: roman
-ai_weight: normal
+ai_weight: low
 created: 2026-02-01
-updated: 2026-02-01
+updated: 2026-02-11
 ---
+
+> **АРХИВ.** Этот файл заменён актуальными шаблонами.
+> Актуальная версия: [[infra_all_instruments/templates/tool-card|Шаблон карточки инструмента]]
+
 # ШАБЛОН ДЛЯ ДОКУМЕНТИРОВАНИЯ ИНСТРУМЕНТА
 
 Используйте этот шаблон при добавлении информации о новом инструменте из скриншотов.

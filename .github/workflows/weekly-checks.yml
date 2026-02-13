@@ -1,0 +1,24 @@
+name: Weekly Documentation Checks
+on:
+  schedule:
+    - cron: '0 8 * * 1'  # Понедельник 8:00 UTC
+  workflow_dispatch: {}
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: YAML Validation
+        run: bash scripts/yaml-validate.sh
+
+      - name: Link Checker
+        run: bash scripts/link-checker.sh
+
+      - name: Freshness Check
+        run: bash scripts/freshness-check.sh --days 30
+        continue-on-error: true
+
+      - name: Generate Stats
+        run: bash scripts/generate-stats.sh

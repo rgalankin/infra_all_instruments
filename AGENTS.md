@@ -2,7 +2,7 @@
 
 <!-- AGENTOPS:BEGIN -->
 ## RULE SWITCHBOARD (TRI-STATE)
-# TEMPLATE-VERSION: 2026-02-10-v4
+# TEMPLATE-VERSION: 2026-02-10-V5
 # FORMAT: - [[<rule-ref>]] : <MODE> — <DESCRIPTION> | NOTES: <OPTIONAL>
 
 - [[docops-core__20260209220613-01]] : true — базовые принципы DocOps | notes: 
@@ -19,10 +19,12 @@
 - [[progressive-validation__20260210103631-06]] : true — непрерывная валидация актуальности документации | notes: 
 - [[agents-vs-adapters__20260210103631-07]] : true — принципы разделения AGENTS.md и адаптеров | notes: 
 - [[project-quality-metrics__20260210103631-08]] : true — метрики качества проекта и чеклисты | notes: 
+- [[changelog-standard__20260210161929-01]] : auto — стандарт файла CHANGELOG.md (БЕЗ YAML, Keep a Changelog) | notes: 
 <!-- AGENTOPS:END -->
 
+
 ## BOOTSTRAP METADATA
-version: 2026-02-10-v4
+version: 2026-02-10-v5
 exclude_from_context_analysis:
   - AGENTS.md
   - AI/*
@@ -31,6 +33,7 @@ exclude_from_context_analysis:
   - AI/agents-vs-adapters__20260210103631-07.md
   - AI/ai-project-development-rules__20260210103631-05.md
   - AI/architecture-standard__20260210103631-02.md
+  - AI/changelog-standard__20260210161929-01.md
   - AI/docops-core__20260209220613-01.md
   - AI/docops-schema__20260209220613-03.md
   - AI/docops-standard__20260209220613-02.md
@@ -49,7 +52,6 @@ context_analysis_instructions: >
   ИСКЛЮЧИТЬ файлы из exclude_from_context_analysis. Эти файлы созданы bootstrap-скриптом
   и не содержат контекста проекта. Анализировать только пользовательские файлы:
   код (src/, lib/, app/), конфигурацию (package.json, pyproject.toml), существующую документацию.
-
 
 ## PROJECT NOTES
 - (optional)

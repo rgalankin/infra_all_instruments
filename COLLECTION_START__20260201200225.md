@@ -1,11 +1,15 @@
 ---
 id: 20260201200225
 title: НАЧАЛО СБОРА ИНФОРМАЦИИ ИЗ СКРИНШОТОВ
-status: active
+summary: >
+  Инструкция по началу сбора информации из скриншотов инструментов.
+type: spec
+status: archived
+tags: [docops/guide, infra/inventory]
 source: roman
-ai_weight: normal
+ai_weight: low
 created: 2026-02-01
-updated: 2026-02-05
+updated: 2026-02-11
 ---
 # НАЧАЛО СБОРА ИНФОРМАЦИИ ИЗ СКРИНШОТОВ
 
