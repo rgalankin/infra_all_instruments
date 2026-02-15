@@ -5,7 +5,7 @@ summary: >
   [Краткое описание инструмента и его роль в инфраструктуре]
 type: spec
 status: active
-tags: [platform/SLUG]
+tags: [platform/slug]
 source: roman
 ai_weight: normal
 created: YYYY-MM-DD

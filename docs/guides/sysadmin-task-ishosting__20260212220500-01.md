@@ -84,7 +84,7 @@ updated: 2026-02-12
 
 - [x] Роль → Web-хостинг (HestiaCP) + LLM Router (Docker)
 - [ ] **Какие проекты/сайты** планируется размещать?
-- [ ] **Связь с Beget/Weeceer** — функциональная (LLM Router заменяет Weeceer? дополняет?)
+- [x] **Связь с Beget** — ISHosting USA заменяет Weeceer как egress proxy; LLM Router + Documentoved — новые функции
 
 #### 8. ПРОБЛЕМЫ ДЛЯ ИСПРАВЛЕНИЯ (ВЫЯВЛЕНЫ ПРИ АУДИТЕ)
 

@@ -5,7 +5,7 @@ status: active
 source: roman
 ai_weight: normal
 created: 2026-02-08
-updated: 2026-02-11
+updated: 2026-02-14
 ---
 # CLAUDE.MD
 
@@ -72,6 +72,24 @@ scripts/               # mcp-sync.mjs, inventory-check.sh, generate-stats.sh, li
   - `needs-update` — карточка есть, но данные устарели/неполны
   - `archived` — архив, не источник истины
 
+## ПРИНЦИП ЕДИНОГО ИСТОЧНИКА
+
+Если для сущности есть **выделенный проект** в `~/Documents/`:
+- Карточка в infra_all_instruments = **УКАЗАТЕЛЬ** (идентификация + wikilinks на проект-источник)
+- Детальная документация = в проекте-источнике
+- **НЕ дублировать** содержимое между указателем и источником
+- При изменениях обновлять **ТОЛЬКО** проект-источник; указатель — только при смене идентификации
+
+Текущие указатели:
+
+| Карточка | Проект-источник |
+|----------|-----------------|
+| VPS Beget | `vps/` |
+| VPS ISHosting USA | `infra_vps_usa/` |
+| VPS ISHosting VPN | `infra_vpn_germany/` |
+
+Стандарт: DocOps-Standard §11.
+
 ## ДОБАВЛЕНИЕ ДОКУМЕНТАЦИИ
 
 ### Новый инструмент
@@ -117,7 +135,8 @@ python3 ~/Documents/AgentOps/scripts/docops-lint.py ~/Documents/infra_all_instru
 ## КОНТЕКСТ ИНФРАСТРУКТУРЫ
 
 - **VPS Beget** (82.202.129.193) — Docker-стек: n8n, Dify, Traefik, Postgres, ASR, MCP-n8n
-- **VPS Weeceer** (91.218.115.228) — US egress proxy для LLM API
+- **VPS ISHosting USA** (149.33.4.37) — egress proxy для LLM API, LLM Router, Documentoved
+- **VPS ISHosting VPN** (38.244.128.203) — VPN-сервер dual-mode (Reality + XHTTP CDN)
 - **n8n** (n8n.fingroup.ru) — движок автоматизаций, очень высокая критичность
 - **WireGuard VPN** (10.66.66.0/24) — закрытый доступ к MCP-n8n
 - **Ollama** (localhost:11434) — 6 установленных моделей

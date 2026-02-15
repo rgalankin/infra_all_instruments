@@ -1,3 +1,12 @@
+---
+id: 20260214131534
+title: CHANGELOG
+status: active
+source: roman
+ai_weight: normal
+created: 2026-02-14
+updated: 2026-02-14
+---
 # CHANGELOG
 
 All notable changes to this project will be documented in this file.
