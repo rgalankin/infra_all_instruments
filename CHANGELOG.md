@@ -27,6 +27,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [2.3] - 2026-02-15
 
+### ADDED
+- Vaultwarden (self-hosted менеджер паролей) развёрнут на VPS ISHosting USA (`keys.fingroup.ru`)
+- ТЗ для сисадмина: мониторинг туннелей + Telegram-алерты (`docs/guides/sysadmin-task-monitoring-alerts__20260215200000-01.md`)
+- Cloudflare API Key сохранён в macOS Keychain и на US VPS для автоматизации
+
 ### CHANGED
 - Git credential helper: исправлен формат (убрано двойное экранирование `\!`, добавлен полный путь к gh)
 - Ollama: удалены 5 LLM-моделей (~47 GB), оставлена только nomic-embed-text (274 MB) для Obsidian Smart Connections. LLM inference перенесён на ISHosting US
