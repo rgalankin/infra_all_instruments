@@ -5,7 +5,7 @@ status: active
 source: roman
 ai_weight: normal
 created: 2026-02-14
-updated: 2026-02-14
+updated: 2026-02-15
 ---
 # CHANGELOG
 
@@ -13,6 +13,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [UNRELEASED]
+
+## [2.2] - 2026-02-15
+
+### ADDED
+- ТЗ для сисадмина: бэкапы VPS Beget (`docs/guides/sysadmin-task-beget-backups__20260214230000-01.md`)
+- ТЗ для сисадмина: бэкапы VPS VPN Germany (`docs/guides/sysadmin-task-vpn-backups__20260214230000-02.md`)
+
+### CHANGED
+- Homebrew: обновлены 32 formulae + 1 cask (claude-code 2.1.37 → 2.1.42)
+- Удалены дубли: Opera, Firefox (браузеры), PDFelement, UPDF (PDF-редакторы) — карточки archived
+- Удалён Slack (501 MB) — карточка archived; Yandex Messenger и Telemost оставлены
+- Удалён Football Manager 2024 (5 GB)
+- MCP Claude Code: 0 → 15 серверов (синхронизация через AgentOps/mcp-hub/sync.py)
+- Реестр MCP обновлён: Claude Code добавлен в сводную таблицу
+- Карточка Homebrew: formulae 100 → 103, обновлены версии
+- Аудит дублирования: обновлены итоги по браузерам, PDF, мессенджерам
+- Рекомендации обновлений: Homebrew помечен как выполненный
+
+### STATS
+- Удалено ~7 GB неиспользуемых приложений (Opera, Firefox, PDFelement, UPDF, Slack, Football Manager)
+- 15 MCP-серверов синхронизированы в Claude Code глобально
 
 ## [2.1] - 2026-02-14
 
