@@ -4,15 +4,20 @@
 #
 # Скрипт выполняет:
 # 1. Поиск всех [[wikilinks]] в .md файлах
-# 2. Проверку существования целевых файлов
-# 3. Проверку обратных ссылок (карточки → индексы)
-# 4. Итоговый отчёт
+# 2. Проверку существования целевых файлов (внутри проекта)
+# 3. Проверку кросс-проектных ссылок в Obsidian vault (~/Documents/)
+# 4. Проверку обратных ссылок (карточки → индексы)
+# 5. Итоговый отчёт
+#
+# Переменные окружения:
+#   VAULT_ROOT — корень Obsidian vault (по умолчанию ~/Documents)
 #
 # Формат wikilinks в репозитории:
 #   [[infra_all_instruments/path/to/file__ID|label]]  — полный путь с префиксом
 #   [[path/to/file__ID|label]]                         — путь относительно корня репо
 #   [[filename__ID|label]]                              — короткое имя (относительно текущей папки)
 #   [[path/to/directory|label]]                         — ссылка на директорию
+#   [[vps/path/to/file__ID|label]]                     — кросс-проектная ссылка (vault root)
 
 set -euo pipefail
 
@@ -28,12 +33,15 @@ NC='\033[0m'
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_DIR="${1:-$(cd "$SCRIPT_DIR/.." && pwd)}"
 REPO_NAME="infra_all_instruments"
+VAULT_ROOT="${VAULT_ROOT:-$HOME/Documents}"
 
 # --- Счётчики ---
 TOTAL_LINKS=0
 BROKEN_LINKS=0
 OK_LINKS=0
 SKIPPED_LINKS=0
+CROSS_PROJECT_OK=0
+CROSS_PROJECT_BROKEN=0
 BACKREF_MISSING=0
 BACKREF_OK=0
 FILES_CHECKED=0
@@ -149,9 +157,39 @@ resolve_wikilink() {
         fi
     fi
 
-    # Шаг 5: Ссылки на внешние проекты (AgentOps и т.п.) — пропускаем
-    if [[ "$link_path" == AgentOps* ]] || [[ "$link_path" == agentops* ]]; then
-        return 2  # Код 2 = пропущено (внешняя ссылка)
+    # Шаг 5: Кросс-проектные ссылки — проверяем в Obsidian vault root (~/Documents/)
+    # Поддерживаемые проекты: vps/, ai_agents/, AgentOps/, и любые другие в vault
+    if [[ -d "$VAULT_ROOT" ]]; then
+        # 5a: Точное совпадение (файл как есть)
+        if [[ -f "$VAULT_ROOT/$link_path" ]]; then
+            return 3  # Код 3 = кросс-проектная ссылка, OK
+        fi
+
+        # 5b: С расширением .md
+        if [[ -f "$VAULT_ROOT/$link_path.md" ]]; then
+            return 3
+        fi
+
+        # 5c: Это директория
+        if [[ -d "$VAULT_ROOT/$link_path" ]]; then
+            return 3
+        fi
+
+        # 5d: Glob-поиск с таймстемпом
+        glob_results=$(compgen -G "$VAULT_ROOT/${link_path}__*.md" 2>/dev/null | head -1) || true
+        if [[ -n "$glob_results" ]]; then
+            return 3
+        fi
+
+        # 5e: Путь уже содержит __ (может быть неточный таймстемп)
+        local vault_base
+        vault_base=$(echo "$link_path" | sed 's/__[0-9-]*$//')
+        if [[ "$vault_base" != "$link_path" ]]; then
+            glob_results=$(compgen -G "$VAULT_ROOT/${vault_base}__*.md" 2>/dev/null | head -1) || true
+            if [[ -n "$glob_results" ]]; then
+                return 3
+            fi
+        fi
     fi
 
     # Не найден
@@ -205,11 +243,21 @@ process_single_link() {
 
     if [[ $result -eq 0 ]]; then
         OK_LINKS=$((OK_LINKS + 1))
+    elif [[ $result -eq 3 ]]; then
+        CROSS_PROJECT_OK=$((CROSS_PROJECT_OK + 1))
     elif [[ $result -eq 2 ]]; then
         SKIPPED_LINKS=$((SKIPPED_LINKS + 1))
     else
-        BROKEN_LINKS=$((BROKEN_LINKS + 1))
-        error_msg "${rel_file}:${line_num} → ${target_path}"
+        # Определяем, является ли это кросс-проектной ссылкой (не начинается с пути внутри репо)
+        # Если первый компонент пути — известный проект в vault, считаем кросс-проект broken
+        local first_segment="${target_path%%/*}"
+        if [[ "$first_segment" != "$target_path" ]] && [[ -d "$VAULT_ROOT/$first_segment" ]] && [[ "$first_segment" != "$REPO_NAME" ]]; then
+            CROSS_PROJECT_BROKEN=$((CROSS_PROJECT_BROKEN + 1))
+            error_msg "${rel_file}:${line_num} → ${target_path} (кросс-проект: $first_segment/)"
+        else
+            BROKEN_LINKS=$((BROKEN_LINKS + 1))
+            error_msg "${rel_file}:${line_num} → ${target_path}"
+        fi
     fi
 }
 
@@ -347,6 +395,7 @@ echo -e "${GREEN}║   Link Checker — infra_all_instruments       ║${NC}"
 echo -e "${GREEN}╚══════════════════════════════════════════════╝${NC}"
 echo "Дата: $(date '+%Y-%m-%d %H:%M')"
 echo "Корень репозитория: $REPO_DIR"
+echo "Obsidian vault root: $VAULT_ROOT"
 
 # --- Часть 1: Проверка wikilinks ---
 section "Проверка wikilinks"
@@ -366,7 +415,7 @@ check_back_references
 section "ИТОГОВЫЙ ОТЧЁТ"
 
 echo ""
-echo -e "  ${BOLD}Wikilinks:${NC}"
+echo -e "  ${BOLD}Wikilinks (внутри проекта):${NC}"
 echo -e "    Файлов проверено:    ${FILES_CHECKED}"
 echo -e "    Всего ссылок:        ${TOTAL_LINKS}"
 echo -e "    ${GREEN}Корректных:          ${OK_LINKS}${NC}"
@@ -376,7 +425,16 @@ else
     echo -e "    ${GREEN}Битых:               0${NC}"
 fi
 if [[ $SKIPPED_LINKS -gt 0 ]]; then
-    echo -e "    ${YELLOW}Пропущено (внешние): ${SKIPPED_LINKS}${NC}"
+    echo -e "    ${YELLOW}Пропущено (шаблоны): ${SKIPPED_LINKS}${NC}"
+fi
+
+echo ""
+echo -e "  ${BOLD}Кросс-проектные ссылки (vault: $VAULT_ROOT):${NC}"
+echo -e "    ${GREEN}Корректных:          ${CROSS_PROJECT_OK}${NC}"
+if [[ $CROSS_PROJECT_BROKEN -gt 0 ]]; then
+    echo -e "    ${RED}Битых:               ${CROSS_PROJECT_BROKEN}${NC}"
+else
+    echo -e "    ${GREEN}Битых:               0${NC}"
 fi
 
 echo ""
@@ -391,9 +449,9 @@ fi
 echo ""
 
 # --- Код возврата ---
-TOTAL_ERRORS=$((BROKEN_LINKS))
+TOTAL_ERRORS=$((BROKEN_LINKS + CROSS_PROJECT_BROKEN))
 if [[ $TOTAL_ERRORS -gt 0 ]]; then
-    echo -e "${RED}Обнаружены битые ссылки: ${TOTAL_ERRORS}${NC}"
+    echo -e "${RED}Обнаружены битые ссылки: ${TOTAL_ERRORS} (внутренних: ${BROKEN_LINKS}, кросс-проектных: ${CROSS_PROJECT_BROKEN})${NC}"
     if [[ $BACKREF_MISSING -gt 0 ]]; then
         echo -e "${YELLOW}Отсутствуют обратные ссылки: ${BACKREF_MISSING}${NC}"
     fi

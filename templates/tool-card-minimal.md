@@ -5,7 +5,7 @@ summary: >
   [Краткое описание. Одна строка.]
 type: spec
 status: active
-tags: [platform/SLUG, eng/CATEGORY]
+tags: [platform/slug, eng/category]
 source: roman
 ai_weight: low
 created: YYYY-MM-DD

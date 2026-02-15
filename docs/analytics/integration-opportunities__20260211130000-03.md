@@ -129,7 +129,7 @@ Telegram дайджест
 Cron (каждые 6 часов)
     ↓
 VPS Beget: docker ps, df -h, n8n /healthz
-VPS Weeceer: ping, proxy status
+VPS ISHosting USA: ping, proxy status, llm-router /healthz
     ↓
 Сравнение с baseline → аномалии
     ↓
