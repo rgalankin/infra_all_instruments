@@ -14,6 +14,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [UNRELEASED]
 
+## [2.1] - 2026-02-14
+
+### ADDED
+- DocOps-Standard §11: паттерн «указатель + источник истины» для кросс-проектных карточек
+- CLAUDE.md: раздел «Принцип единого источника» с таблицей текущих указателей
+- Карточка HestiaCP (`docs/tools/hestiacp__20260214225000-01.md`)
+- Карточка Cloudflare (`docs/tools/cloudflare__20260214225000-02.md`)
+- Карточка IS Smart API (`docs/tools/is-smart__20260214210000-01.md`)
+- План оптимизации v2 (`docs/analytics/optimization-plan-v2__20260214220000-01.md`)
+- Операционные TODO в карточках VPS Beget и VPS ISHosting VPN Germany
+- `link-checker.sh`: поддержка кросс-проектных ссылок в Obsidian vault
+
+### CHANGED
+- Реестр доменов: полные DNS-записи credoserv.ru, credoserv.store (новый), kredoserv.ru
+- Weeceer cleanup: 12 файлов обновлено — VPS Weeceer (91.218.115.228) → archived, заменён VPS ISHosting USA (149.33.4.37)
+- Инфраструктурные карточки (VPS Beget, ISHosting USA, ISHosting VPN) переведены в режим указателей на проекты-источники
+- Индексы инфраструктуры и инструментов обновлены
+- SSH-алиасы hk/weeceer помечены как устаревшие
+- Маршруты LLM API в data-flows обновлены на ISHosting USA
+
+### STATS
+- 183 .md файла, ~16 000 строк
+- 0 битых ссылок (980 внутренних + 28 кросс-проектных)
+- План оптимизации v2: 5/5 фаз завершено
+
 ## [2.0] - 2026-02-11
 
 ### ADDED — ФАЗА 1: АТОМИЗАЦИЯ
