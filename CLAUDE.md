@@ -4,6 +4,9 @@ title: CLAUDE.MD
 status: active
 source: roman
 ai_weight: normal
+tags: [platform/git, platform/markdown, docops/standard, process/docs, process/index]
+type: note
+summary: Документ представляет собой инструкцию для Claude Code по работе с репозиторием, содержащим базу знаний IT-инфраструктуры. Описывается структура репозитория, навигация и основные компоненты.
 created: 2026-02-08
 updated: 2026-02-14
 ---

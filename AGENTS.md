@@ -4,6 +4,9 @@ title: AGENTS
 status: active
 source: roman
 ai_weight: normal
+tags: [docops/agentops, docops/rules, docops/schema, docops/standard, docops/tri-state]
+type: process
+summary: Документ описывает набор правил и стандартов для DocOps, реализованных в формате tri-state переключателя. Он определяет базовые принципы, стандарты документации, YAML-схемы и другие важные аспекты.
 created: 2026-02-09
 updated: 2026-02-14
 ---

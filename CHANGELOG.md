@@ -14,6 +14,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [UNRELEASED]
 
+### Задачи (Plan v3)
+- [ ] #5 macOS-приложения → brew cask (Cursor, Obsidian, Docker, Bitwarden)
+- [ ] #6 Мониторинг egress-tunnel Beget → Telegram alert
+- [ ] #7 VPN-мониторинг → Telegram alert
+- [ ] #8 MCP-sync автоматизация (launchd)
+- [ ] #9 Script-center активация (AgentOps)
+- [ ] #10 Cross-project link checker
+- [ ] #11 n8n-автоматизации
+- [ ] #12 Follow-up по ТЗ бэкапов
+- [ ] #13 Развернуть Vaultwarden на VPS Beget (self-hosted менеджер паролей)
+
+## [2.3] - 2026-02-15
+
+### CHANGED
+- Git credential helper: исправлен формат (убрано двойное экранирование `\!`, добавлен полный путь к gh)
+- Ollama: удалены 5 LLM-моделей (~47 GB), оставлена только nomic-embed-text (274 MB) для Obsidian Smart Connections. LLM inference перенесён на ISHosting US
+- MCP-секреты: 5 API-ключей мигрированы из plaintext `.env` в macOS Keychain; права `.env` ужесточены до 600
+- Claude Code hooks: настроен PostToolUse hook для auto-lint .md файлов при записи (docops-lint.py)
+- Карточка Ollama: обновлена (1 модель, 274 MB, категория → Local Embedding)
+- 5 карточек нейросетей → status: archived (qwen3-30b, qwen3-coder-30b, deepseek-r1-8b, llama3.1-8b, qwen2.5-coder-1.5b)
+
+### STATS
+- Освобождено ~47 GB дискового пространства (Ollama LLM-модели)
+- 5 секретов защищены через macOS Keychain
+
 ## [2.2] - 2026-02-15
 
 ### ADDED
