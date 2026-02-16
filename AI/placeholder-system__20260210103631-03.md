@@ -69,7 +69,7 @@ AI ОБЯЗАНА при обнаружении этой заглушки:
 
 **Особенность:** README.md БЕЗ YAML frontmatter (требование GitHub), метаданные в HTML-комментариях.
 
-### 2. ARCHITECTURE.md — структура проекта
+### 2. ARCHITECTURE__20260210103632-01.md — структура проекта
 
 **Назначение:** Карта файловой структуры и архитектуры проекта.
 
@@ -93,7 +93,7 @@ updated: {{UPDATED_DATE}}
 placeholder: true
 placeholder_version: 2026-02-10-v1
 placeholder_instructions: >
-  Этот ARCHITECTURE.md — заглушка, созданная ai-bootstrap.py.
+  Этот ARCHITECTURE__20260210103632-01.md — заглушка, созданная ai-bootstrap.py.
 
   AI ОБЯЗАНА при обнаружении "placeholder: true":
   1. Прочитать AGENTS.md → извлечь exclude_from_context_analysis
@@ -227,7 +227,7 @@ placeholder_instructions: >
 ### Расположение метаданных
 
 - **README.md**: HTML-комментарии (т.к. нет YAML frontmatter)
-- **ARCHITECTURE.md**: YAML frontmatter (дополнительные поля)
+- **ARCHITECTURE__20260210103632-01.md**: YAML frontmatter (дополнительные поля)
 - **CLAUDE.md**: YAML frontmatter (дополнительные поля)
 - **Другие адаптеры**: по формату файла (YAML для .md, комментарии для .cursorrules)
 
@@ -425,13 +425,13 @@ bootstrap_metadata:
 
   # Инструкции для AI по заполнению заглушек
   context_analysis_instructions: >
-    При заполнении заглушек (README.md, ARCHITECTURE.md, CLAUDE.md):
+    При заполнении заглушек (README.md, ARCHITECTURE__20260210103632-01.md, CLAUDE.md):
 
     1. ИСКЛЮЧИТЬ файлы из списка exclude_from_context_analysis
     2. Проанализировать все остальные файлы проекта:
        - Код (определить язык, фреймворки, зависимости)
        - Конфигурация (package.json, pyproject.toml, Cargo.toml, etc.)
-       - Существующие документы (старый README.txt, CONTRIBUTING.md, etc.)
+       - Существующие документы (старый README.txt, CONTRIBUTING__20260213171958.md, etc.)
     3. Построить контекст проекта:
        - Название (из package.json или директории)
        - Технологии (из зависимостей и расширений файлов)
@@ -442,7 +442,7 @@ bootstrap_metadata:
        - Если контекста недостаточно → задать вопросы пользователю
     5. После заполнения:
        - Убрать метаданные "placeholder: true"
-       - Обновить "status: draft" → "status: active" (для ARCHITECTURE.md)
+       - Обновить "status: draft" → "status: active" (для ARCHITECTURE__20260210103632-01.md)
        - Обновить "updated" в YAML
 ---
 ```
@@ -509,7 +509,7 @@ my-project/
 ├── pyproject.toml         # зависимости
 ├── AGENTS.md              # коммутатор (без placeholder)
 ├── README.md              # ЗАГЛУШКА (placeholder: true в HTML-комментах)
-├── ARCHITECTURE.md        # ЗАГЛУШКА (placeholder: true в YAML)
+├── ARCHITECTURE__20260210103632-01.md        # ЗАГЛУШКА (placeholder: true в YAML)
 └── CLAUDE.md              # ЗАГЛУШКА (placeholder: true в YAML)
 ```
 
@@ -548,7 +548,7 @@ empty-project/
 ├── AI/                     # rulepack
 ├── AGENTS.md
 ├── README.md              # ЗАГЛУШКА
-├── ARCHITECTURE.md        # ЗАГЛУШКА
+├── ARCHITECTURE__20260210103632-01.md        # ЗАГЛУШКА
 └── CLAUDE.md              # ЗАГЛУШКА
 ```
 
@@ -570,7 +570,7 @@ empty-project/
 ### Чек-лист для bootstrap-скрипта
 
 - [ ] Создаёт `README.md` с HTML-комментариями `<!-- PLACEHOLDER: true -->`
-- [ ] Создаёт `ARCHITECTURE.md` с `placeholder: true` в YAML
+- [ ] Создаёт `ARCHITECTURE__20260210103632-01.md` с `placeholder: true` в YAML
 - [ ] Создаёт `CLAUDE.md` с `placeholder: true` в YAML
 - [ ] Добавляет `bootstrap_metadata` в `AGENTS.md`
 - [ ] Заполняет `exclude_from_context_analysis` актуальным списком
@@ -592,7 +592,7 @@ empty-project/
 
 - [[project-initialization__20260210103631-04|Project-Initialization-Standard]] — полный процесс инициализации проекта
 - [[readme-standard__20260210103631-01|README-Standard]] — требования к файлу README.md
-- [[architecture-standard__20260210103631-02|ARCHITECTURE-Standard]] — требования к файлу ARCHITECTURE.md
+- [[architecture-standard__20260210103631-02|ARCHITECTURE-Standard]] — требования к файлу ARCHITECTURE__20260210103632-01.md
 - [[agents-format__20260209220613-05|AGENTS-Format]] — формат AGENTS.md и bootstrap_metadata
 - [[adapters__20260209220613-06|Adapters]] — адаптеры под инструменты
 

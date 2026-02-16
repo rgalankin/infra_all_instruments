@@ -59,7 +59,7 @@ scripts/               # mcp-sync.mjs, inventory-check.sh, generate-stats.sh, li
 - `ВСЯ МОЯ ИНФРАСТРУКТУРА (для LLM)__20260201200225.md` → `registry__20260210220000-01.md`
 - `docs/mcp-servers__20260201200225.md` → `docs/mcp/_index__20260210220000-06.md`
 - `docs/tools/neural-networks__20260201232828.md` → `docs/neural-networks/_index__20260210220000-05.md`
-- `docs/tools/template.md` → `templates/tool-card.md`
+- `docs/tools/template.md` → `templates/tool-card__YYYYMMDDHHMMSS-XX.md`
 
 ## КЛЮЧЕВЫЕ ПРАВИЛА
 
@@ -98,19 +98,19 @@ scripts/               # mcp-sync.mjs, inventory-check.sh, generate-stats.sh, li
 ### Новый инструмент
 1. Определить Tier (1/2/3) → глубина документации
 2. Создать карточку в `docs/tools/` по шаблону:
-   - Tier 1: `templates/tool-card.md` (полный, 12 секций)
-   - Tier 2-3: `templates/tool-card-minimal.md` (лёгкий, 4 секции)
+   - Tier 1: `templates/tool-card__YYYYMMDDHHMMSS-XX.md` (полный, 12 секций)
+   - Tier 2-3: `templates/tool-card-minimal__YYYYMMDDHHMMSS-XX.md` (лёгкий, 4 секции)
 3. Обновить `docs/tools/_index__20260210220000-04.md`
 4. Если есть MCP — создать карточку в `docs/mcp/cards/`
 5. Обновить перекрёстные ссылки
 
 ### Новая нейросеть
-1. Создать карточку в `docs/neural-networks/cards/` по `templates/nn-model-card.md`
+1. Создать карточку в `docs/neural-networks/cards/` по `templates/nn-model-card__YYYYMMDDHHMMSS-XX.md`
 2. Обновить `docs/neural-networks/_index__20260210220000-05.md`
 3. Добавить в соответствующие MOC: by-type, by-provider, by-runtime
 
 ### Новый MCP-сервер
-1. Создать карточку в `docs/mcp/cards/` по `templates/mcp-server-card.md`
+1. Создать карточку в `docs/mcp/cards/` по `templates/mcp-server-card__YYYYMMDDHHMMSS-XX.md`
 2. Обновить `docs/mcp/_index__20260210220000-06.md`
 3. Обновить `docs/mcp/by-tool/` для соответствующих инструментов
 

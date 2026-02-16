@@ -1,8 +1,8 @@
 ---
 id: 20260210161929-01
-title: CHANGELOG-Standard — требования к файлу CHANGELOG.md
+title: CHANGELOG-Standard — требования к файлу CHANGELOG__20260214212750.md
 summary: >
-  Стандарт для файла CHANGELOG.md: фиксированное имя, формат Keep a Changelog v1.1.0, БЕЗ YAML frontmatter, ISO-даты вместо SemVer, placeholder через HTML-комментарии.
+  Стандарт для файла CHANGELOG__20260214212750.md: фиксированное имя, формат Keep a Changelog v1.1.0, БЕЗ YAML frontmatter, ISO-даты вместо SemVer, placeholder через HTML-комментарии.
 type: spec
 status: active
 tags: [docops/agentops, docops/standards, docops/changelog]
@@ -15,7 +15,7 @@ updated: 2026-02-10
 
 ## 1) НАЗНАЧЕНИЕ
 
-`CHANGELOG.md` — tool-entry файл с фиксированным именем, фиксирующий историю изменений проекта в структурированном виде. Формат основан на [Keep a Changelog v1.1.0](https://keepachangelog.com/en/1.1.0/).
+`CHANGELOG__20260214212750.md` — tool-entry файл с фиксированным именем, фиксирующий историю изменений проекта в структурированном виде. Формат основан на [Keep a Changelog v1.1.0](https://keepachangelog.com/en/1.1.0/).
 
 **Ценность для AI-инструментов:**
 - Показывает эволюцию проекта (какие проблемы решались и когда)
@@ -28,10 +28,10 @@ updated: 2026-02-10
 ## 2) ПРАВИЛА
 
 ### 2.1 Фиксированное имя
-Файл ОБЯЗАН называться `CHANGELOG.md` (UPPERCASE).
+Файл ОБЯЗАН называться `CHANGELOG__20260214212750.md` (UPPERCASE).
 
 ### 2.2 YAML Frontmatter — ЗАПРЕЩЁН
-`CHANGELOG.md` НЕ ДОЛЖЕН содержать YAML frontmatter (аналогично README.md).
+`CHANGELOG__20260214212750.md` НЕ ДОЛЖЕН содержать YAML frontmatter (аналогично README.md).
 
 ### 2.3 Формат — Keep a Changelog v1.1.0
 Категории: Added, Changed, Deprecated, Removed, Fixed, Security.
@@ -58,6 +58,6 @@ HTML-комментарии (как README.md). AI заполняет на ос�
 ## LINKS (INTERNAL)
 
 - [[readme-standard__20260210103631-01|README-Standard]] — аналогичный стандарт для README.md
-- [[architecture-standard__20260210103631-02|ARCHITECTURE-Standard]] — стандарт ARCHITECTURE.md
+- [[architecture-standard__20260210103631-02|ARCHITECTURE-Standard]] — стандарт ARCHITECTURE__20260210103632-01.md
 - [[placeholder-system__20260210103631-03|Placeholder-System-Standard]] — система placeholder
 - [[adapters__20260209220613-06|Adapters]] — таблица tool-entry файлов

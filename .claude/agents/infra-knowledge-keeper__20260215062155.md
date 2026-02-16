@@ -1,4 +1,13 @@
 ---
+id: 20260215062155
+title: infra knowledge keeper
+status: active
+source: roman
+ai_weight: normal
+created: 2026-02-15
+updated: 2026-02-15
+---
+---
 id: 20260214131534
 title: infra knowledge keeper
 status: active
@@ -47,8 +56,8 @@ color: blue
 ### При добавлении нового инструмента:
 1. Определи категорию: hardware, tool, neural-network, mcp-server, infrastructure
 2. Для инструментов определи Tier (1/2/3) по критичности:
-   - Tier 1: критически важные, ежедневные — полный шаблон `templates/tool-card.md`
-   - Tier 2-3: вспомогательные — лёгкий шаблон `templates/tool-card-minimal.md`
+   - Tier 1: критически важные, ежедневные — полный шаблон `templates/tool-card__YYYYMMDDHHMMSS-XX.md`
+   - Tier 2-3: вспомогательные — лёгкий шаблон `templates/tool-card-minimal__YYYYMMDDHHMMSS-XX.md`
 3. Прочитай соответствующий шаблон из `templates/`
 4. Создай карточку в правильной директории
 5. Обновив соответствующий _index файл

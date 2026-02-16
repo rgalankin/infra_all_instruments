@@ -36,7 +36,7 @@ python3 /path/to/AgentOps/template/scripts/ai-bootstrap.py /path/to/new-project
 3. Переименование файлов с добавлением ID-суффиксов
 4. Переписывание Obsidian-ссылок (замена на ID-версии)
 5. Создание `AGENTS.md` с управляемым блоком
-6. Создание заглушек: `README.md`, `ARCHITECTURE.md`, `CLAUDE.md`
+6. Создание заглушек: `README.md`, `ARCHITECTURE__20260210103632-01.md`, `CLAUDE.md`
 
 **Результат:**
 ```
@@ -52,7 +52,7 @@ project/
 │   └── adapters__XXXXX.md
 ├── AGENTS.md                         # Коммутатор правил
 ├── README.md                         # ЗАГЛУШКА (placeholder: true)
-├── ARCHITECTURE.md                   # ЗАГЛУШКА (placeholder: true)
+├── ARCHITECTURE__20260210103632-01.md                   # ЗАГЛУШКА (placeholder: true)
 └── CLAUDE.md                         # ЗАГЛУШКА (placeholder: true)
 ```
 
@@ -67,7 +67,7 @@ project/
 **Триггер:** Первое касание проекта (open, read file, edit)
 
 **Что происходит:**
-1. AI читает любой файл проекта (README.md, ARCHITECTURE.md, src/)
+1. AI читает любой файл проекта (README.md, ARCHITECTURE__20260210103632-01.md, src/)
 2. Обнаруживает метаданные `placeholder: true` в YAML или HTML-комментариях
 3. Извлекает `placeholder_instructions` из файла
 4. Понимает, что проект в состоянии инициализации
@@ -114,7 +114,7 @@ project/
 
    d) Извлечь существующую документацию:
       - README.txt (старый формат)
-      - CONTRIBUTING.md
+      - CONTRIBUTING__20260213171958.md
       - docs/*.md
 
    e) Определить название проекта:
@@ -167,7 +167,7 @@ project/
    - Использование: на основе entry_points
    - Структура: из tree scan
 
-2. Заполнить ARCHITECTURE.md:
+2. Заполнить ARCHITECTURE__20260210103632-01.md:
    - Overview: project_name + technologies
    - Directory Structure: из tree scan с описанием назначения папок
    - Entry Points: из найденных main файлов
@@ -184,7 +184,7 @@ project/
    - Технологии: Python 3.11, FastAPI
    - Entry point: src/main.py
 
-   Заполнил README.md и ARCHITECTURE.md на основе анализа.
+   Заполнил README.md и ARCHITECTURE__20260210103632-01.md на основе анализа.
    Проверьте корректность?"
 
 5. Если пользователь подтверждает:
@@ -203,7 +203,7 @@ project/
 ```
 1. Сообщить пользователю:
    "Проект выглядит новым (пустым).
-   Чтобы заполнить README.md и ARCHITECTURE.md, мне нужна информация.
+   Чтобы заполнить README.md и ARCHITECTURE__20260210103632-01.md, мне нужна информация.
    Задам несколько вопросов."
 
 2. Задать вопросы (используя AskUserQuestion):
@@ -217,7 +217,7 @@ project/
 3. Заполнить заглушки на основе ответов
 
 4. Показать результат:
-   "Заполнил README.md и ARCHITECTURE.md на основе ваших ответов.
+   "Заполнил README.md и ARCHITECTURE__20260210103632-01.md на основе ваших ответов.
    Проверьте корректность?"
 
 5. После подтверждения:
@@ -227,7 +227,7 @@ project/
 
 **Результат:**
 - README.md заполнен
-- ARCHITECTURE.md заполнен
+- ARCHITECTURE__20260210103632-01.md заполнен
 - CLAUDE.md заполнен (минимальная версия)
 - Метаданные placeholder удалены
 
@@ -242,13 +242,13 @@ project/
 **Что происходит:**
 1. Проверка всех заполненных файлов:
    - README.md: нет placeholder, заполнены все разделы
-   - ARCHITECTURE.md: нет placeholder, status: active
+   - ARCHITECTURE__20260210103632-01.md: нет placeholder, status: active
    - CLAUDE.md: нет placeholder, минимальная версия
 2. Обновление метаданных проекта (если используется PROJECT-STATUS.md)
 3. Сообщение пользователю:
    "✅ Проект инициализирован!
    - README.md: заполнен
-   - ARCHITECTURE.md: заполнен
+   - ARCHITECTURE__20260210103632-01.md: заполнен
    - AGENTS.md: настроен
    - Правила DocOps/AgentOps: активны
 
@@ -273,13 +273,13 @@ project/
 
 - [ ] Создана директория `AI/` с 6-8 файлами rulepack
 - [ ] Создан `AGENTS.md` с bootstrap_metadata
-- [ ] Созданы заглушки: README.md, ARCHITECTURE.md, CLAUDE.md
+- [ ] Созданы заглушки: README.md, ARCHITECTURE__20260210103632-01.md, CLAUDE.md
 - [ ] Все файлы помечены `placeholder: true`
 
 ### После заполнения заглушек (AI)
 
 - [ ] README.md заполнен, нет `placeholder: true`
-- [ ] ARCHITECTURE.md заполнен, status: active
+- [ ] ARCHITECTURE__20260210103632-01.md заполнен, status: active
 - [ ] CLAUDE.md заполнен (минимальная версия)
 - [ ] Пользователь подтвердил корректность
 
@@ -288,7 +288,7 @@ project/
 - [ ] Все tool-entry файлы заполнены (README, ARCHITECTURE, AGENTS, CLAUDE)
 - [ ] Нет файлов с `placeholder: true`
 - [ ] AGENTS.md содержит актуальный список правил
-- [ ] Directory structure в ARCHITECTURE.md соответствует реальной структуре
+- [ ] Directory structure в ARCHITECTURE__20260210103632-01.md соответствует реальной структуре
 
 ---
 
@@ -302,7 +302,7 @@ project/
 
 **Стратегия:**
 - Диалоговое заполнение (вопросы пользователю)
-- ARCHITECTURE.md с базовой структурой (заполнить позже)
+- ARCHITECTURE__20260210103632-01.md с базовой структурой (заполнить позже)
 
 ### Новый проект с кодом
 
@@ -320,7 +320,7 @@ project/
 
 **Признаки:**
 - Зрелый codebase
-- Существующие README.md, CONTRIBUTING.md, docs/
+- Существующие README.md, CONTRIBUTING__20260213171958.md, docs/
 - Возможно, уже есть .cursorrules или другие AI-правила
 
 **Стратегия:**
@@ -362,7 +362,7 @@ python3 ai-bootstrap.py .
 3. AI не обучена распознавать placeholders
 
 **Решение:**
-- Явно попросить AI: "Прочитай README.md и ARCHITECTURE.md. Это заглушки, заполни их."
+- Явно попросить AI: "Прочитай README.md и ARCHITECTURE__20260210103632-01.md. Это заглушки, заполни их."
 - Обновить CLAUDE.md с инструкциями по распознаванию placeholders
 
 ### Проблема: Контекста недостаточно, но AI не задаёт вопросы
@@ -399,7 +399,7 @@ my-api/
 ├── pyproject.toml
 ├── AGENTS.md
 ├── README.md              # ЗАГЛУШКА
-├── ARCHITECTURE.md        # ЗАГЛУШКА
+├── ARCHITECTURE__20260210103632-01.md        # ЗАГЛУШКА
 └── CLAUDE.md              # ЗАГЛУШКА
 ```
 
@@ -409,7 +409,7 @@ my-api/
 
 **AI заполняет автоматически:**
 - README.md: "REST API на FastAPI для [назначение]. Технологии: Python 3.11, FastAPI, SQLAlchemy..."
-- ARCHITECTURE.md: структура, entry points, компоненты
+- ARCHITECTURE__20260210103632-01.md: структура, entry points, компоненты
 
 **Подтверждение:**
 "Проект: my-api, FastAPI REST API. Заполнил README и ARCHITECTURE. Корректно?"
@@ -428,7 +428,7 @@ empty-project/
 ├── AI/
 ├── AGENTS.md
 ├── README.md              # ЗАГЛУШКА
-├── ARCHITECTURE.md        # ЗАГЛУШКА
+├── ARCHITECTURE__20260210103632-01.md        # ЗАГЛУШКА
 └── CLAUDE.md              # ЗАГЛУШКА
 ```
 
@@ -447,7 +447,7 @@ empty-project/
 
 **AI заполняет:**
 - README.md на основе ответов
-- ARCHITECTURE.md с базовой структурой
+- ARCHITECTURE__20260210103632-01.md с базовой структурой
 
 ---
 
@@ -456,7 +456,7 @@ empty-project/
 - [[placeholder-system__20260210103631-03|Placeholder-System-Standard]] — технические детали системы заглушек
 - [[progressive-validation__20260210103631-06|Progressive-Validation-Standard]] — поддержка актуальности после инициализации
 - [[readme-standard__20260210103631-01|README-Standard]] — требования к README.md
-- [[architecture-standard__20260210103631-02|ARCHITECTURE-Standard]] — требования к ARCHITECTURE.md
+- [[architecture-standard__20260210103631-02|ARCHITECTURE-Standard]] — требования к ARCHITECTURE__20260210103632-01.md
 - [[agents-format__20260209220613-05|AGENTS-Format]] — формат AGENTS.md
 
 ---

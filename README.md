@@ -54,7 +54,7 @@ updated: 2026-02-14
 ├── templates/                           # 6 шаблонов карточек
 ├── scripts/                             # Скрипты синхронизации и валидации
 ├── AI/                                  # Rulepack DocOps/AgentOps
-└── AGENTS.md, CLAUDE.md, ARCHITECTURE.md
+└── AGENTS.md, CLAUDE.md, ARCHITECTURE__20260210103632-01.md
 ```
 
 ## ДОБАВЛЕНИЕ ДОКУМЕНТАЦИИ
@@ -63,15 +63,15 @@ updated: 2026-02-14
 
 1. Определить Tier (1/2/3) — глубина документации
 2. Создать карточку в `docs/tools/` по шаблону из `templates/`
-   - Tier 1: `templates/tool-card.md` (полный, 95 строк)
-   - Tier 2-3: `templates/tool-card-minimal.md` (лёгкий, 45 строк)
+   - Tier 1: `templates/tool-card__YYYYMMDDHHMMSS-XX.md` (полный, 95 строк)
+   - Tier 2-3: `templates/tool-card-minimal__YYYYMMDDHHMMSS-XX.md` (лёгкий, 45 строк)
 3. Обновить `docs/tools/_index__20260210220000-04.md`
 4. Если есть MCP — создать карточку в `docs/mcp/cards/`
 5. Обновить перекрёстные ссылки
 
 ### НОВАЯ НЕЙРОСЕТЬ
 
-1. Создать карточку в `docs/neural-networks/cards/` по `templates/nn-model-card.md`
+1. Создать карточку в `docs/neural-networks/cards/` по `templates/nn-model-card__YYYYMMDDHHMMSS-XX.md`
 2. Обновить `docs/neural-networks/_index__20260210220000-05.md`
 3. Добавить в MOC: by-type, by-provider, by-runtime
 

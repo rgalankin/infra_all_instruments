@@ -1,8 +1,8 @@
 ---
 id: 20260210103631-02
-title: ARCHITECTURE-Standard — требования к файлу ARCHITECTURE.md
+title: ARCHITECTURE-Standard — требования к файлу ARCHITECTURE__20260210103632-01.md
 summary: >
-  Стандарт оформления файла ARCHITECTURE.md — карты структуры проекта для людей и AI. Фиксированное имя без ID-суффикса, YAML frontmatter обязателен, стандартные разделы.
+  Стандарт оформления файла ARCHITECTURE__20260210103632-01.md — карты структуры проекта для людей и AI. Фиксированное имя без ID-суффикса, YAML frontmatter обязателен, стандартные разделы.
 type: spec
 status: active
 tags: [docops/standard, docops/rules, docops/agentops]
@@ -15,7 +15,7 @@ updated: 2026-02-09
 
 ## НАЗНАЧЕНИЕ
 
-`ARCHITECTURE.md` — документ, описывающий структуру и архитектуру проекта. Индустриальный стандарт де-факто для open-source проектов (rust-analyzer, VSCode, Flutter, NextJS, Redis).
+`ARCHITECTURE__20260210103632-01.md` — документ, описывающий структуру и архитектуру проекта. Индустриальный стандарт де-факто для open-source проектов (rust-analyzer, VSCode, Flutter, NextJS, Redis).
 
 **Основные функции:**
 1. **Directory Structure** — карта файловой структуры проекта (что где находится)
@@ -31,19 +31,19 @@ updated: 2026-02-09
 
 | Параметр | Значение | Обоснование |
 |----------|----------|-------------|
-| **Имя** | `ARCHITECTURE.md` | Индустриальный стандарт де-факто (awesome-architecture-md, Матклад) |
+| **Имя** | `ARCHITECTURE__20260210103632-01.md` | Индустриальный стандарт де-факто (awesome-architecture-md, Матклад) |
 | **Регистр** | UPPERCASE для корня | Стандартная конвенция для tool-entry файлов |
 | **ID-суффикс** | ЗАПРЕЩЁН | `ARCHITECTURE__20260209-01.md` нестандартен и не распознаётся |
 | **Расположение** | Корень репозитория | Основное местоположение; альтернатива: `docs/architecture.md` (lowercase) |
 
-**Tool-Entry File Exception:** `ARCHITECTURE.md` относится к категории tool-entry файлов и является исключением из правила именования с ID-суффиксами согласно [[agents-format__20260209220613-05|AGENTS-Format]].
+**Tool-Entry File Exception:** `ARCHITECTURE__20260210103632-01.md` относится к категории tool-entry файлов и является исключением из правила именования с ID-суффиксами согласно [[agents-format__20260209220613-05|AGENTS-Format]].
 
 ### 2. YAML FRONTMATTER — ОБЯЗАТЕЛЕН
 
-**В отличие от README.md**, `ARCHITECTURE.md` ДОЛЖЕН содержать YAML frontmatter по стандарту DocOps.
+**В отличие от README.md**, `ARCHITECTURE__20260210103632-01.md` ДОЛЖЕН содержать YAML frontmatter по стандарту DocOps.
 
 **Обоснование:**
-- ARCHITECTURE.md — технический документ (не маркетинговый)
+- ARCHITECTURE__20260210103632-01.md — технический документ (не маркетинговый)
 - Используется преимущественно разработчиками и AI
 - Метаданные критичны для индексации и навигации
 - Не отображается автоматически на GitHub (нет проблем с видимостью frontmatter)
@@ -124,7 +124,7 @@ updated: YYYY-MM-DD
 ├── AGENTS.md               # Конфигурация AI-агентов
 ├── CLAUDE.md               # Инструкции для Claude Code
 ├── README.md               # Описание проекта
-└── ARCHITECTURE.md         # Этот документ
+└── ARCHITECTURE__20260210103632-01.md         # Этот документ
 \`\`\`
 
 ### Назначение директорий
@@ -225,7 +225,7 @@ updated: YYYY-MM-DD
 
 ## ОТЛИЧИЯ ОТ README.MD
 
-| Параметр | ARCHITECTURE.md | README.md |
+| Параметр | ARCHITECTURE__20260210103632-01.md | README.md |
 |----------|-----------------|-----------|
 | **YAML frontmatter** | ✅ Обязателен (10 полей DocOps) | ❌ ЗАПРЕЩЁН (виден на GitHub) |
 | **Аудитория** | Разработчики, AI | Широкая (пользователи, контрибьюторы) |
@@ -238,16 +238,16 @@ updated: YYYY-MM-DD
 ## ВЗАИМОДЕЙСТВИЕ С AI-ИНСТРУМЕНТАМИ
 
 ### CLAUDE CODE
-- Читает `ARCHITECTURE.md` для понимания структуры проекта
+- Читает `ARCHITECTURE__20260210103632-01.md` для понимания структуры проекта
 - YAML frontmatter НЕ мешает (Claude парсит Markdown)
 - Приоритет для навигации благодаря `ai_weight: high`
 
 ### CURSOR AI
-- Индексирует `ARCHITECTURE.md` при первом открытии проекта
+- Индексирует `ARCHITECTURE__20260210103632-01.md` при первом открытии проекта
 - Использует Directory Structure для рекомендаций размещения файлов
 
 ### GITHUB COPILOT
-- Читает ARCHITECTURE.md как контекст
+- Читает ARCHITECTURE__20260210103632-01.md как контекст
 - Frontmatter игнорируется (не критично, т.к. файл не отображается автоматически)
 
 ---
@@ -255,7 +255,7 @@ updated: YYYY-MM-DD
 ## ПРИМЕРЫ ИЗ ИНДУСТРИИ
 
 ### RUST-ANALYZER — ЭТАЛОННЫЙ ПРИМЕР
-[GitHub: rust-analyzer/ARCHITECTURE.md](https://github.com/rust-lang/rust-analyzer/blob/master/docs/dev/architecture.md)
+[GitHub: rust-analyzer/ARCHITECTURE__20260210103632-01.md](https://github.com/rust-lang/rust-analyzer/blob/master/docs/dev/architecture.md)
 
 Структура:
 - Overview
@@ -270,7 +270,7 @@ updated: YYYY-MM-DD
 Альтернативное размещение: wiki, но концепция та же.
 
 ### FLUTTER ENGINE
-[GitHub: flutter/engine/ARCHITECTURE.md](https://github.com/flutter/flutter/wiki/The-Engine-architecture)
+[GitHub: flutter/engine/ARCHITECTURE__20260210103632-01.md](https://github.com/flutter/flutter/wiki/The-Engine-architecture)
 
 Детальные диаграммы компонентов и потоков данных.
 
@@ -281,7 +281,7 @@ updated: YYYY-MM-DD
 ### АВТОМАТИЧЕСКАЯ ВАЛИДАЦИЯ (DOCOPS-LINT.PY)
 
 Скрипт проверяет:
-- ✅ Наличие `ARCHITECTURE.md` в корне репозитория
+- ✅ Наличие `ARCHITECTURE__20260210103632-01.md` в корне репозитория
 - ✅ YAML frontmatter присутствует и валиден (10 полей)
 - ✅ Обязательные разделы: Overview, Directory Structure, Entry Points
 - ✅ Раздел Links (internal) при наличии Obsidian-ссылок
@@ -299,7 +299,7 @@ updated: YYYY-MM-DD
 
 ### ЕСЛИ ARCHITECTURE.MD ОТСУТСТВУЕТ
 
-1. Скопировать шаблон из `template/ARCHITECTURE.md`
+1. Скопировать шаблон из `template/ARCHITECTURE__20260210103632-01.md`
 2. Сгенерировать ID: `date +"%Y%m%d%H%M%S"`
 3. Заполнить YAML frontmatter (вставить ID, title, summary, tags)
 4. Описать Directory Structure (скопировать из `tree` или `ls`)
@@ -310,12 +310,12 @@ updated: YYYY-MM-DD
 
 **Вариант A:** Переместить в корень с переименованием
 ```bash
-mv docs/architecture.md ARCHITECTURE.md
+mv docs/architecture.md ARCHITECTURE__20260210103632-01.md
 # Добавить YAML frontmatter
 # Обновить ссылки в других документах
 ```
 
-**Вариант B:** Создать ARCHITECTURE.md в корне со ссылкой
+**Вариант B:** Создать ARCHITECTURE__20260210103632-01.md в корне со ссылкой
 ```markdown
 # ARCHITECTURE
 
@@ -336,7 +336,7 @@ mv docs/architecture.md ARCHITECTURE.md
 
 ### PROGRESSIVE ENRICHMENT
 
-AI-агент (по стандарту DocOps) при касании `ARCHITECTURE.md` ОБЯЗАН:
+AI-агент (по стандарту DocOps) при касании `ARCHITECTURE__20260210103632-01.md` ОБЯЗАН:
 - Проверить актуальность Directory Structure (сверить с `tree`)
 - Обновить поле `updated` в YAML
 - Дополнить пустые разделы (если есть placeholder)

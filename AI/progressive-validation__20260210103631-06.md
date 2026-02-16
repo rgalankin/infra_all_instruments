@@ -95,8 +95,8 @@ def get_user_by_id(user_id: int) -> User:
 **Проверка:**
 ```python
 IF директория не в exclude_patterns (.git/, .venv/, node_modules/):
-  IF директория не упомянута в ARCHITECTURE.md → Directory Structure:
-    → TRIGGER: "Добавить {dir_name}/ в ARCHITECTURE.md?"
+  IF директория не упомянута в ARCHITECTURE__20260210103632-01.md → Directory Structure:
+    → TRIGGER: "Добавить {dir_name}/ в ARCHITECTURE__20260210103632-01.md?"
 ```
 
 **Пример:**
@@ -104,7 +104,7 @@ IF директория не в exclude_patterns (.git/, .venv/, node_modules/):
 # Пользователь создал src/migrations/
 # AI обнаруживает:
 "Создана новая директория src/migrations/.
-Добавить описание в ARCHITECTURE.md → Directory Structure?
+Добавить описание в ARCHITECTURE__20260210103632-01.md → Directory Structure?
   src/migrations/    # Миграции базы данных"
 ```
 
@@ -118,8 +118,8 @@ IF директория не в exclude_patterns (.git/, .venv/, node_modules/):
 IF изменены dependencies/devDependencies:
   IF новые зависимости не упомянуты в README.md → Technologies:
     → TRIGGER: "Обновить список технологий в README.md?"
-  IF новые зависимости не упомянуты в ARCHITECTURE.md → Technologies:
-    → TRIGGER: "Обновить Technologies в ARCHITECTURE.md?"
+  IF новые зависимости не упомянуты в ARCHITECTURE__20260210103632-01.md → Technologies:
+    → TRIGGER: "Обновить Technologies в ARCHITECTURE__20260210103632-01.md?"
 ```
 
 **Пример:**
@@ -130,9 +130,9 @@ redis = "^5.0.0"  # НОВАЯ ЗАВИСИМОСТЬ
 
 # AI обнаруживает:
 "Добавлена зависимость redis в pyproject.toml.
-Обновить README.md и ARCHITECTURE.md:
+Обновить README.md и ARCHITECTURE__20260210103632-01.md:
   - README.md → Technologies: добавить Redis
-  - ARCHITECTURE.md → Technologies: добавить Redis 5.0"
+  - ARCHITECTURE__20260210103632-01.md → Technologies: добавить Redis 5.0"
 ```
 
 ### Триггер 4: Рефакторинг структуры
@@ -144,11 +144,11 @@ redis = "^5.0.0"  # НОВАЯ ЗАВИСИМОСТЬ
 
 **Проверка:**
 ```python
-IF ARCHITECTURE.md → Directory Structure не соответствует tree:
-  → TRIGGER: "ARCHITECTURE.md устарел. Обновить структуру директорий?"
+IF ARCHITECTURE__20260210103632-01.md → Directory Structure не соответствует tree:
+  → TRIGGER: "ARCHITECTURE__20260210103632-01.md устарел. Обновить структуру директорий?"
 
-IF ARCHITECTURE.md → Entry Points не существуют:
-  → TRIGGER: "Entry point изменился ({old} → {new}). Обновить ARCHITECTURE.md?"
+IF ARCHITECTURE__20260210103632-01.md → Entry Points не существуют:
+  → TRIGGER: "Entry point изменился ({old} → {new}). Обновить ARCHITECTURE__20260210103632-01.md?"
 ```
 
 **Пример:**
@@ -156,7 +156,7 @@ IF ARCHITECTURE.md → Entry Points не существуют:
 # Пользователь переименовал src/main.py → src/app.py
 # AI обнаруживает:
 "Entry point изменился: src/main.py → src/app.py.
-Обновить ARCHITECTURE.md → Entry Points:
+Обновить ARCHITECTURE__20260210103632-01.md → Entry Points:
   - src/app.py — основная точка входа (было: src/main.py)"
 ```
 
@@ -171,7 +171,7 @@ IF ARCHITECTURE.md → Entry Points не существуют:
 ```python
 IF пользователь обсуждал варианты с AI:
   IF решение принято:
-    → TRIGGER: "Зафиксировать архитектурное решение в ARCHITECTURE.md → Design Decisions?"
+    → TRIGGER: "Зафиксировать архитектурное решение в ARCHITECTURE__20260210103632-01.md → Design Decisions?"
 ```
 
 **Пример:**
@@ -182,7 +182,7 @@ AI: "Рекомендую PostgreSQL, потому что..."
 User: "Согласен, используем PostgreSQL."
 
 # AI предлагает:
-"Зафиксировать это решение в ARCHITECTURE.md → Design Decisions:
+"Зафиксировать это решение в ARCHITECTURE__20260210103632-01.md → Design Decisions:
 
 ### Решение: Выбор СУБД
 Контекст: Необходимо было выбрать между MySQL и PostgreSQL.
@@ -240,7 +240,7 @@ IF structure актуальна: score += 25
 IF score < 75: WARN "README.md качество низкое"
 ```
 
-### Метрика 2: Актуальность ARCHITECTURE.md
+### Метрика 2: Актуальность ARCHITECTURE__20260210103632-01.md
 
 **Критерии:**
 - ✅ Directory Structure соответствует `tree` (проверка через сканирование)
@@ -258,9 +258,9 @@ missing_dirs = actual_dirs - architecture_dirs  # Новые директори�
 obsolete_dirs = architecture_dirs - actual_dirs  # Удалённые
 
 IF missing_dirs:
-  → TRIGGER: "Обнаружены новые директории: {missing_dirs}. Добавить в ARCHITECTURE.md?"
+  → TRIGGER: "Обнаружены новые директории: {missing_dirs}. Добавить в ARCHITECTURE__20260210103632-01.md?"
 IF obsolete_dirs:
-  → TRIGGER: "Директории удалены: {obsolete_dirs}. Обновить ARCHITECTURE.md?"
+  → TRIGGER: "Директории удалены: {obsolete_dirs}. Обновить ARCHITECTURE__20260210103632-01.md?"
 ```
 
 ### Метрика 3: Покрытие тестами
@@ -312,11 +312,11 @@ FUNCTION validate_documentation_on_touch():
        → CHECK: есть ли значительные изменения с тех пор?
        → IF yes: WARN "README.md устарел"
 
-  2. READ ARCHITECTURE.md → extract Directory Structure
+  2. READ ARCHITECTURE__20260210103632-01.md → extract Directory Structure
      SCAN project tree
      COMPARE architecture_dirs vs actual_dirs
      IF mismatch:
-       → TRIGGER: "ARCHITECTURE.md не синхронизирован"
+       → TRIGGER: "ARCHITECTURE__20260210103632-01.md не синхронизирован"
 
   3. READ package.json / pyproject.toml → extract dependencies
      READ README.md → extract Technologies section
@@ -335,7 +335,7 @@ FUNCTION validate_after_task(task_description):
 
   IF task == "рефакторинг":
     → CHECK: изменилась структура?
-    → IF yes: TRIGGER "Обновить ARCHITECTURE.md?"
+    → IF yes: TRIGGER "Обновить ARCHITECTURE__20260210103632-01.md?"
 
   IF task == "добавление зависимости":
     → CHECK: зависимость в README.md?
@@ -347,7 +347,7 @@ FUNCTION validate_before_commit():
     → IF no: WARN "Обновить updated в YAML"
 
   IF добавлены новые файлы (src/новый_модуль.py):
-    → CHECK: упомянуты ли в ARCHITECTURE.md?
+    → CHECK: упомянуты ли в ARCHITECTURE__20260210103632-01.md?
     → IF no: TRIGGER "Добавить в Key Components?"
 ```
 
@@ -384,20 +384,20 @@ FUNCTION validate_before_commit():
    → Обновить `updated` в YAML (если YAML есть)
 ```
 
-### Сценарий 2: ARCHITECTURE.md не синхронизирован
+### Сценарий 2: ARCHITECTURE__20260210103632-01.md не синхронизирован
 
 **Обнаружено:**
-- ARCHITECTURE.md → Directory Structure упоминает `src/utils/`
+- ARCHITECTURE__20260210103632-01.md → Directory Structure упоминает `src/utils/`
 - Реальная структура: `src/utils/` не существует, но есть `src/helpers/`
 
 **Действия AI:**
 ```
 1. Сообщить:
-   "ARCHITECTURE.md → Directory Structure не соответствует реальной структуре:
+   "ARCHITECTURE__20260210103632-01.md → Directory Structure не соответствует реальной структуре:
      - src/utils/ — упомянута, но не существует
      - src/helpers/ — существует, но не упомянута
 
-   Похоже, src/utils/ была переименована. Обновить ARCHITECTURE.md?"
+   Похоже, src/utils/ была переименована. Обновить ARCHITECTURE__20260210103632-01.md?"
 
 2. IF пользователь согласен:
    → Заменить src/utils/ на src/helpers/ в Directory Structure
@@ -439,7 +439,7 @@ FUNCTION validate_before_commit():
 2. IF пользователь согласен:
    → Добавить в Technologies:
      "- Axios 1.6 — HTTP-клиент"
-   → Также проверить ARCHITECTURE.md (обновить там, если есть раздел Technologies)
+   → Также проверить ARCHITECTURE__20260210103632-01.md (обновить там, если есть раздел Technologies)
 ```
 
 ---
@@ -457,7 +457,7 @@ AI использует чек-листы для проверки качеств
     - Install instructions работают
     - Structure актуальна
 
-[ ] ARCHITECTURE.md актуален
+[ ] ARCHITECTURE__20260210103632-01.md актуален
     - Directory Structure соответствует tree
     - Entry Points существуют и не переименованы
     - Key Components актуальны
@@ -489,7 +489,7 @@ AI использует чек-листы для проверки качеств
 ### Чеклист после рефакторинга
 
 ```
-[ ] ARCHITECTURE.md обновлён (если изменилась структура)
+[ ] ARCHITECTURE__20260210103632-01.md обновлён (если изменилась структура)
     - Directory Structure актуальна
     - Entry Points актуальны
     - Design Decisions зафиксированы (если архитектурное решение)
@@ -503,7 +503,7 @@ AI использует чек-листы для проверки качеств
 ```
 [ ] Документация синхронизирована с кодом
     - README.md актуален
-    - ARCHITECTURE.md актуален (если были структурные изменения)
+    - ARCHITECTURE__20260210103632-01.md актуален (если были структурные изменения)
 
 [ ] Метаданные обновлены
     - updated в YAML обновлён (для файлов с YAML)
@@ -571,7 +571,7 @@ IF все файлы БЕЗ placeholder: true:
 
 **Начальное состояние:**
 - README.md заполнен (placeholder: false, updated: 2026-01-15)
-- ARCHITECTURE.md заполнен (placeholder: false, updated: 2026-01-15)
+- ARCHITECTURE__20260210103632-01.md заполнен (placeholder: false, updated: 2026-01-15)
 - Проект работает, нет изменений
 
 **AI касается проекта (2026-02-10):**
@@ -612,16 +612,16 @@ async def process_payment(payment_id: int) -> PaymentResult:
 
 **AI обнаруживает:**
 ```
-1. READ ARCHITECTURE.md → Directory Structure:
+1. READ ARCHITECTURE__20260210103632-01.md → Directory Structure:
    src/utils/    # Вспомогательные функции
 
 2. SCAN project tree → src/utils/ НЕ СУЩЕСТВУЕТ, есть src/helpers/
 
 3. TRIGGER: "Директория src/utils/ переименована в src/helpers/.
-            Обновить ARCHITECTURE.md?"
+            Обновить ARCHITECTURE__20260210103632-01.md?"
 
 4. IF пользователь согласен:
-   → UPDATE ARCHITECTURE.md:
+   → UPDATE ARCHITECTURE__20260210103632-01.md:
      src/helpers/    # Вспомогательные функции (было: src/utils/)
    → UPDATE `updated: 2026-02-10`
 ```
@@ -720,7 +720,7 @@ bootstrap_metadata:
 - [[project-initialization__20260210103631-04|Project-Initialization-Standard]] — процесс первичного заполнения
 - [[ai-project-development-rules__20260210103631-05|AI-Project-Development-Rules]] — правила поведения AI
 - [[readme-standard__20260210103631-01|README-Standard]] — требования к README.md
-- [[architecture-standard__20260210103631-02|ARCHITECTURE-Standard]] — требования к ARCHITECTURE.md
+- [[architecture-standard__20260210103631-02|ARCHITECTURE-Standard]] — требования к ARCHITECTURE__20260210103632-01.md
 - [[agents-format__20260209220613-05|AGENTS-Format]] — формат AGENTS.md и tri-state режимы
 
 ---
