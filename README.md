@@ -1,6 +1,9 @@
 ---
 id: 20260214131534
 title: INFRA_ALL_INSTRUMENTS
+summary: >
+  Атомарная база знаний IT-инфраструктуры. Единый каталог всего инструментария: софт, железо, нейросети, серверы, MCP-серверы, интеграции и их взаимосвязи.
+type: index
 status: active
 source: roman
 ai_weight: normal

@@ -1,6 +1,8 @@
 ---
 id: 20260215062155
 title: infra knowledge keeper
+summary: "id: 20260214131534"
+type: note
 status: active
 source: roman
 ai_weight: normal
