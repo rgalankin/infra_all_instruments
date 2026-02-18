@@ -8,7 +8,7 @@ tags: [docops/agentops, docops/rules, docops/schema, docops/standard, docops/tri
 type: process
 summary: Документ описывает набор правил и стандартов для DocOps, реализованных в формате tri-state переключателя. Он определяет базовые принципы, стандарты документации, YAML-схемы и другие важные аспекты.
 created: 2026-02-09
-updated: 2026-02-14
+updated: 2026-02-19
 ---
 # AGENTS
 
@@ -31,7 +31,14 @@ updated: 2026-02-14
 - [[progressive-validation__20260210103631-06]] : true — непрерывная валидация актуальности документации | notes: 
 - [[agents-vs-adapters__20260210103631-07]] : true — принципы разделения AGENTS.md и адаптеров | notes: 
 - [[project-quality-metrics__20260210103631-08]] : true — метрики качества проекта и чеклисты | notes: 
-- [[changelog-standard__20260210161929-01]] : auto — стандарт файла CHANGELOG__20260214212750.md (БЕЗ YAML, Keep a Changelog) | notes: 
+- [[changelog-standard__20260210161929-01]] : auto — стандарт файла CHANGELOG__20260214212750.md (БЕЗ YAML, Keep a Changelog) | notes:
+
+## COMPANY CANON (pointer → ai_agents)
+# Company SoT: ~/Documents/ai_agents/docs/neurocompany/
+# Doc Pack Index: neurocompany-docpack-index__20260218190000-01.md
+# Реестры: tools-registry__20260218133000-01.md, sources-registry__20260218134500-01.md
+# Правило: reuse-first - перед созданием нового инструмента/источника проверь реестры
+- [[neurocompany-docpack-index__20260218190000-01]] : true — карта стандартов нейрокомпании | notes: ~/Documents/ai_agents/docs/neurocompany/
 <!-- AGENTOPS:END -->
 
 
@@ -66,4 +73,5 @@ context_analysis_instructions: >
   код (src/, lib/, app/), конфигурацию (package.json, pyproject.toml), существующую документацию.
 
 ## PROJECT NOTES
-- (optional)
+- Company Canon: `~/Documents/ai_agents/docs/neurocompany/` (Doc Pack Index)
+- Правило reuse-first: перед созданием инструмента/источника - проверь TOOLS/SOURCES registry
