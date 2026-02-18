@@ -8,7 +8,7 @@ tags: [platform/git, platform/markdown, docops/standard, process/docs, process/i
 type: note
 summary: Документ представляет собой инструкцию для Claude Code по работе с репозиторием, содержащим базу знаний IT-инфраструктуры. Описывается структура репозитория, навигация и основные компоненты.
 created: 2026-02-08
-updated: 2026-02-14
+updated: 2026-02-18
 ---
 # CLAUDE.MD
 
@@ -106,8 +106,13 @@ scripts/               # mcp-sync.mjs, inventory-check.sh, generate-stats.sh, li
 
 ### Новая нейросеть
 1. Создать карточку в `docs/neural-networks/cards/` по `templates/nn-model-card__YYYYMMDDHHMMSS-XX.md`
-2. Обновить `docs/neural-networks/_index__20260210220000-05.md`
+2. **ОБЯЗАТЕЛЬНО** обновить `docs/neural-networks/_index__20260210220000-05.md`:
+   - Добавить модель в соответствующую таблицу (локальные/облачные/self-hosted)
+   - Если новый провайдер: добавить в секцию "Облачные Embedding-провайдеры" (или аналогичную)
+   - Обновить таблицу "Быстрый выбор по задаче" если модель лучше текущей рекомендации
+   - Добавить wikilink на карточку
 3. Добавить в соответствующие MOC: by-type, by-provider, by-runtime
+4. **ПРОВЕРКА:** убедиться, что ВСЕ уровни навигации обновлены (card → by-type → _index → registry). Если добавляются новые провайдеры, добавить их в секцию "По рантайму" в `_index`
 
 ### Новый MCP-сервер
 1. Создать карточку в `docs/mcp/cards/` по `templates/mcp-server-card__YYYYMMDDHHMMSS-XX.md`
