@@ -1,0 +1,623 @@
+# Infrastructure Matrix - YAML version
+# Generated: 2026-02-19
+# Source: infrastructure-matrix__20260219.md
+# Designations: true = deployed, false = not deployed, null = unknown, planned = prepared
+
+infrastructure_points:
+  us:
+    name: "ISHosting USA"
+    location: "New York, USA"
+    ip: "149.33.4.37"
+    role: "LLM Router, Egress Proxy, Hub (DB+RAG+CLI), VPN"
+    criticality: high
+    cost_monthly_usd: 39.99
+    os: "Ubuntu 24.04.4 LTS"
+    cpu: "Xeon 4x2.20 GHz"
+    ram_gb: 8
+    disk_gb: 50
+    disk_type: SSD
+    docker_version: "29.2.1"
+    firewall: UFW
+    panel: HestiaCP
+    ssh: "roman@149.33.4.37"
+
+  de:
+    name: "ISHosting VPN Germany"
+    location: "Germany"
+    ip: "38.244.128.203"
+    role: "VPN dual-mode (Reality + XHTTP)"
+    criticality: medium
+    cost_monthly_usd: 6.99
+    os: "Debian 12"
+    cpu: "1 Core"
+    ram_mb: 960
+    disk_gb: 9.8
+    disk_type: SSD
+    docker_version: null
+    firewall: null
+    ssh: "roman@38.244.128.203"
+
+  ru:
+    name: "VPS Beget"
+    location: "Russia"
+    ip: "82.202.129.193"
+    role: "Production: n8n, Dify, Traefik, PostgreSQL, MCP"
+    criticality: high
+    cost_monthly_usd: null
+    os: "Ubuntu 24.04 LTS"
+    cpu: null
+    ram_gb: null
+    disk_gb: null
+    docker_version: true
+    firewall: UFW
+    ssh: "roman@82.202.129.193"
+
+  local:
+    name: "iMac Pro 2017"
+    location: "macOS Desktop"
+    ip: "localhost"
+    role: "Development, AI agents, Claude Code, Ollama"
+    criticality: high
+    os: "macOS"
+    cpu: "8-Core Xeon W"
+    ram_gb: 32
+    gpu: "Vega 56"
+    display: "5K"
+    docker: "Docker Desktop"
+
+mcp_servers:
+  # Claude Code (ai_agents)
+  - id: b24-portal
+    tool: claude-code
+    us: false
+    de: false
+    ru: false
+    local: true
+    description: "Bitrix24 REST API (tasks, users, CRM)"
+
+  - id: b24-dev
+    tool: claude-code
+    us: false
+    de: false
+    ru: false
+    local: true
+    description: "Bitrix24 REST API documentation"
+
+  - id: github
+    tool: claude-code
+    us: false
+    de: false
+    ru: false
+    local: true
+    description: "GitHub API (issues, PRs, repos)"
+
+  - id: brave-search
+    tool: claude-code
+    us: false
+    de: false
+    ru: false
+    local: true
+    description: "Brave Search API"
+
+  - id: google-workspace
+    tool: claude-code
+    us: false
+    de: false
+    ru: false
+    local: true
+    description: "11 Google Workspace services (complete tier)"
+
+  - id: kb-server
+    tool: claude-code
+    us: true
+    de: false
+    ru: false
+    local: true
+    description: "Semantic KB search (Qdrant + PostgreSQL)"
+
+  # Server-side MCP (Docker)
+  - id: mcp-n8n-prod
+    tool: server
+    us: false
+    de: false
+    ru: true
+    local: false
+    port: 3900
+    description: "MCP for n8n production"
+
+  - id: mcp-n8n-dev
+    tool: server
+    us: false
+    de: false
+    ru: true
+    local: false
+    port: 3904
+    description: "MCP for n8n development"
+
+  - id: mcp-postgres
+    tool: server
+    us: true
+    de: false
+    ru: true
+    local: false
+    port_us: 3902
+    port_ru: 3903
+    description: "MCP for PostgreSQL"
+
+  - id: mcp-warp-http
+    tool: server
+    us: false
+    de: false
+    ru: true
+    local: false
+    port: 3901
+    description: "MCP for Warp HTTP API"
+
+scripts:
+  b24:
+    - id: b24-agent-context.sh
+      local: true
+      description: "Load agent context from B24"
+    - id: b24-create-task.sh
+      local: true
+      description: "Create B24 task"
+    - id: b24-update-task.sh
+      local: true
+      description: "Update B24 task status"
+    - id: b24-add-task-comment.sh
+      local: true
+      description: "Add comment to B24 task"
+    - id: b24-send-message.sh
+      local: true
+      description: "Send message to B24 chat"
+    - id: b24-register-chatbots.sh
+      local: true
+      description: "Register chatbots in B24"
+    - id: b24-register-chatbots-batch2.sh
+      local: true
+      description: "Register chatbots batch 2"
+
+  email:
+    - id: check-corporate-email.sh
+      local: true
+      description: "Check corporate email (IMAP)"
+    - id: send-corporate-email.sh
+      local: true
+      description: "Send corporate email (SMTP)"
+    - id: email-poller.py
+      us: true
+      local: true
+      description: "Email polling daemon"
+    - id: deploy-email-poller.sh
+      us: true
+      local: true
+      description: "Deploy email poller to server"
+
+  google_api:
+    - id: google-sheets-edit.py
+      local: true
+      description: "CRUD Google Sheets API v4"
+    - id: google-calendar.py
+      local: true
+      description: "CRUD Google Calendar"
+    - id: google-tasks.py
+      local: true
+      description: "CRUD Google Tasks"
+    - id: google-docs.py
+      local: true
+      description: "CRUD Google Docs"
+    - id: google-contacts.py
+      local: true
+      description: "Google Contacts API"
+    - id: google-maps.py
+      local: true
+      description: "Google Maps API"
+    - id: google-search-console.py
+      local: true
+      description: "Google Search Console API"
+    - id: google-translate.py
+      local: true
+      description: "Google Translation API"
+    - id: google-vision-ocr.py
+      local: true
+      description: "Google Vision OCR API"
+
+  kb:
+    - id: kb-indexer.py
+      us: true
+      local: true
+      description: "Index KB to Qdrant + PostgreSQL"
+    - id: mcp-kb-server.py
+      us: true
+      local: true
+      description: "MCP server for semantic KB search"
+    - id: kb-enhance.py
+      local: true
+      description: "Enhance KB cards"
+    - id: kb-add-crossrefs.py
+      local: true
+      description: "Add crossrefs to KB"
+    - id: kb-process.py
+      local: true
+      description: "Process KB documents"
+
+  other:
+    - id: git-sync-pull.sh
+      us: true
+      description: "Git sync pull on VPS (cron */5)"
+    - id: claude-stats-collector.py
+      local: true
+      description: "Claude Code statistics"
+    - id: llm-sheet-updater.py
+      local: true
+      description: "Update LLM registry in Google Sheets"
+    - id: validate-agents-structure.sh
+      local: true
+      description: "Validate agent structure"
+
+api_integrations:
+  - id: google_workspace
+    name: "Google Workspace (11 services)"
+    us: false
+    de: false
+    ru: false
+    local: true
+    auth: oauth2
+    free: true
+    services: [gmail, drive, calendar, docs, sheets, slides, forms, chat, tasks, contacts, apps_script]
+
+  - id: google_cloud_vision
+    name: "Google Cloud Vision OCR"
+    local: true
+    auth: oauth2
+    free: limited
+
+  - id: google_cloud_translation
+    name: "Google Cloud Translation"
+    local: true
+    auth: oauth2
+    free: limited
+
+  - id: google_maps
+    name: "Google Maps"
+    local: true
+    auth: api_key
+    free: limited
+
+  - id: google_search_console
+    name: "Google Search Console"
+    local: true
+    auth: oauth2
+    free: true
+
+  - id: bitrix24_rest
+    name: "Bitrix24 REST API"
+    local: true
+    auth: webhook
+    free: true
+    portal: "x-credoserv.bitrix24.ru"
+
+  - id: openai
+    name: "OpenAI API"
+    us: true
+    local: true
+    auth: api_key
+    free: false
+    models: [gpt-4o, gpt-4o-mini, gpt-4-turbo, o1, o3-mini]
+
+  - id: anthropic
+    name: "Anthropic API"
+    us: true
+    local: true
+    auth: api_key
+    free: false
+    models: [claude-opus-4-6, claude-sonnet-4-5, claude-haiku-4-5]
+
+  - id: google_gemini
+    name: "Google Gemini API"
+    us: true
+    local: true
+    auth: api_key
+    free: limited
+    models: [gemini-2.5-pro, gemini-2.0-flash]
+
+  - id: deepseek
+    name: "DeepSeek API"
+    us: true
+    local: true
+    auth: api_key
+    free: false
+    models: [deepseek-chat, deepseek-reasoner]
+
+  - id: openrouter
+    name: "OpenRouter API"
+    us: true
+    local: true
+    auth: api_key
+    free: false
+    models_count: 400
+
+  - id: groq
+    name: "Groq API"
+    us: planned
+    auth: api_key
+    free: limited
+    note: "API key pending"
+
+  - id: siliconflow
+    name: "SiliconFlow API"
+    us: true
+    local: true
+    auth: api_key
+    free: limited
+    usage: "Embeddings (Qwen3-Embedding-8B, 4096 dims)"
+
+  - id: brave_search
+    name: "Brave Search API"
+    local: true
+    auth: api_key
+    free: false
+
+  - id: github
+    name: "GitHub API"
+    local: true
+    auth: token
+    free: true
+
+  - id: linear
+    name: "Linear API"
+    local: true
+    auth: api_key
+    free: true
+
+  - id: telegram
+    name: "Telegram API"
+    ru: true
+    local: true
+    auth: token
+    free: true
+
+  - id: gigachat
+    name: "GigaChat API (Sber)"
+    ru: true
+    auth: oauth2
+    free: limited
+
+  - id: elevenlabs
+    name: "ElevenLabs API"
+    local: true
+    auth: api_key
+    free: limited
+    usage: "Text-to-Speech"
+
+llm_models:
+  via_router:
+    endpoint_us: "http://149.33.4.37:8080/v1/chat/completions"
+    endpoint_local: "http://localhost:8000/v1/chat/completions"
+    endpoint_ru: planned
+    models:
+      - id: claude-opus-4-6
+        provider: anthropic
+        input_per_1m: 15.00
+        output_per_1m: 75.00
+      - id: claude-sonnet-4-5
+        provider: anthropic
+        input_per_1m: 3.00
+        output_per_1m: 15.00
+      - id: claude-haiku-4-5
+        provider: anthropic
+        input_per_1m: 0.80
+        output_per_1m: 4.00
+      - id: gpt-4o
+        provider: openai
+        input_per_1m: 2.50
+        output_per_1m: 10.00
+      - id: gpt-4o-mini
+        provider: openai
+        input_per_1m: 0.15
+        output_per_1m: 0.60
+      - id: gpt-4-turbo
+        provider: openai
+        input_per_1m: 10.00
+        output_per_1m: 30.00
+      - id: o1
+        provider: openai
+        input_per_1m: 15.00
+        output_per_1m: 60.00
+      - id: o3-mini
+        provider: openai
+        input_per_1m: 1.10
+        output_per_1m: 4.40
+      - id: gemini-2.5-pro
+        provider: google
+        input_per_1m: 1.25
+        output_per_1m: 10.00
+      - id: gemini-2.0-flash
+        provider: google
+        input_per_1m: 0.10
+        output_per_1m: 0.40
+      - id: deepseek-chat
+        provider: deepseek
+        input_per_1m: 0.27
+        output_per_1m: 1.10
+      - id: deepseek-reasoner
+        provider: deepseek
+        input_per_1m: 0.55
+        output_per_1m: 2.19
+
+  local_ollama:
+    endpoint: "http://localhost:11434"
+    models:
+      - id: "qwen3:30b"
+        params: 30B
+        size_gb: 18
+        purpose: "Main, Russian language"
+        russian_score: 8
+      - id: "qwen3-coder:30b"
+        params: 30B
+        size_gb: 18
+        purpose: "Coding"
+        russian_score: 7
+      - id: "deepseek-r1:8b"
+        params: 8B
+        size_gb: 5.2
+        purpose: "Reasoning"
+        russian_score: 7
+      - id: "llama3.1:8b"
+        params: 8B
+        size_gb: 4.9
+        purpose: "Balance speed/quality"
+        russian_score: 6
+      - id: "llama3.2:latest"
+        params: 3.2B
+        size_gb: 2
+        purpose: "Lightweight tasks"
+        russian_score: 5
+      - id: "gpt-oss:20b"
+        params: 20.9B
+        size_gb: 14
+        purpose: "Alternative for complex tasks"
+      - id: "qwen2.5-coder:1.5b"
+        params: 1.5B
+        size_gb: 1
+        purpose: "IDE autocomplete"
+        russian_score: 5
+      - id: "nomic-embed-text:latest"
+        params: 137M
+        size_gb: 0.27
+        purpose: "Embeddings for @codebase"
+
+docker_services:
+  ru:
+    host: "82.202.129.193"
+    networks:
+      - name: net_proxy
+        type: public
+        services: [traefik, n8n, n8n-dev, dify, portainer, pgadmin, credoserv]
+      - name: net_internal
+        type: private
+        services: [postgresql, qdrant, mcp-n8n, mcp-n8n-dev, mcp-postgres, mcp-ssh, mcp-warp-http, asr, telegram-forwarder, telegram-story-publisher, whatsapp-api, warp-runner]
+    services:
+      - name: traefik
+        port: "80,443"
+        domain: "*.fingroup.ru"
+        criticality: high
+      - name: n8n
+        port: 5678
+        domain: "n8n.fingroup.ru"
+        criticality: very_high
+      - name: n8n-dev
+        port: 5678
+        domain: "n8n-dev.fingroup.ru"
+        criticality: medium
+      - name: postgresql
+        port: 5432
+        criticality: high
+        databases: [n8n, n8n_dev, credoserv_chat, telegram_leads, telegram_stories, ebk]
+      - name: qdrant
+        port: 6333
+        criticality: high
+      - name: dify
+        domain: "dify.fingroup.ru"
+        criticality: high
+        containers: [api, worker, worker-beat, web, nginx, redis, postgres, plugin_daemon]
+      - name: asr
+        criticality: medium
+        engine: faster-whisper
+        containers: [redis-asr, asr-api, asr-worker, asr-cleanup]
+      - name: credoserv-chat
+        domain: "credoserv.ru, api.credoserv.ru"
+        criticality: medium
+        containers: [credoserv-frontend, credoserv-backend]
+
+  us:
+    host: "149.33.4.37"
+    services:
+      - name: egress-proxy
+        image: "ubuntu/squid"
+        port: 3128
+        criticality: high
+      - name: llm-router
+        image: "python:3.11-slim (custom)"
+        port: 8080
+        criticality: high
+      - name: hub-traefik
+        version: "v3.6.8"
+        port: 8444
+        criticality: high
+      - name: hub-n8n
+        version: "v2.7.5"
+        port: 5678
+        domain: "n8n-usa.fingroup.ru"
+        criticality: high
+      - name: hub-postgres
+        version: "16"
+        port: 5432
+        criticality: high
+      - name: hub-qdrant
+        port: "6333,6334"
+        criticality: high
+      - name: hub-mcp-postgres
+        port: 3902
+        criticality: medium
+      - name: hub-mcp-n8n
+        port: 3900
+        criticality: medium
+      - name: 3x-ui
+        port: "2053,2096"
+        criticality: medium
+        note: "VPN (VLESS Reality)"
+      - name: vaultwarden
+        criticality: medium
+
+  de:
+    host: "38.244.128.203"
+    services:
+      - name: 3x-ui
+        port: "443,47819"
+        criticality: medium
+        note: "VPN dual-mode: Reality + XHTTP CDN"
+      - name: dokodemo-door
+        port: "50443,50382"
+        criticality: medium
+        note: "Multi-hop relay to US"
+      - name: nginx
+        port: 443
+        criticality: medium
+        note: "geo-routing for Reality SNI"
+
+  local:
+    services:
+      - name: ollama
+        port: 11434
+        note: "LLM runtime (8 models)"
+      - name: llm-router-dev
+        port: 8000
+        note: "LLM Router development instance"
+      - name: paddleocr
+        port: 8080
+        note: "OCR Russian language"
+      - name: open-webui
+        note: "UI for local LLMs"
+
+git_sync:
+  principle: "Mac = master (push), VPS = read-only replica (pull)"
+  script: "/opt/hub/git-sync/git-sync-pull.sh"
+  cron: "*/5 * * * *"
+  repos_count: 16
+  on_md_change: "auto-run kb-indexer.py for Qdrant"
+  embedding_provider: "SiliconFlow"
+  embedding_model: "Qwen3-Embedding-8B"
+  embedding_dims: 4096
+
+summary:
+  infrastructure_points: 4
+  mcp_servers_unique: 21
+  python_scripts: 37
+  api_integrations: 19
+  llm_models_via_router: 13
+  llm_models_local_ollama: 8
+  docker_containers_ru: 20
+  docker_containers_us: 12
+  docker_containers_de: 3
+  docker_containers_local: 4
