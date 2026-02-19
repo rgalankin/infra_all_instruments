@@ -115,6 +115,14 @@ mcp_servers:
     local: true
     description: "Semantic KB search (Qdrant + PostgreSQL)"
 
+  - id: calculator
+    tool: claude-code
+    us: true
+    de: true
+    ru: true
+    local: true
+    description: "Mathematical calculations (free)"
+
   # Server-side MCP (Docker)
   - id: mcp-n8n-prod
     tool: server
@@ -390,6 +398,85 @@ api_integrations:
     free: limited
     usage: "Text-to-Speech"
 
+  - id: dadata
+    name: "DaData API"
+    us: true
+    de: true
+    ru: true
+    local: true
+    auth: api_key
+    free: limited
+    free_note: "10K requests/day"
+    usage: "Address standardization, INN, company details"
+
+  - id: fssp
+    name: "FSSP API (ФССП)"
+    us: true
+    de: "check_proxy"
+    ru: true
+    local: true
+    auth: null
+    free: limited
+    free_note: "~500 requests/day"
+    usage: "Enforcement proceedings debt check"
+    note: "US access may require RU proxy via Beget"
+
+  - id: cbr
+    name: "Bank of Russia API (Банк России)"
+    us: true
+    de: true
+    ru: true
+    local: true
+    auth: null
+    free: true
+    usage: "Currency rates, credit org registries, reference data"
+
+  - id: rosfinmonitoring
+    name: "Rosfinmonitoring API (Росфинмониторинг)"
+    us: true
+    de: true
+    ru: true
+    local: true
+    auth: null
+    free: true
+    usage: "Sanctions/terrorism/extremism list check"
+
+  - id: api_parser
+    name: "api-parser.ru"
+    us: true
+    de: "check_proxy"
+    ru: true
+    local: true
+    auth: api_key
+    free: false
+    cost: "990 RUB/month"
+    usage: "Web scraping, monitoring, data collection"
+    note: "US access may require RU proxy via Beget"
+
+  - id: spectrumdata
+    name: "SpectrumData"
+    us: true
+    de: "check_proxy"
+    ru: true
+    local: true
+    auth: api_key
+    free: false
+    cost: "~10 RUB/request"
+    usage: "Person/company verification: passports, INN, vehicles, courts"
+    note: "US access may require RU proxy via Beget"
+
+  - id: idx
+    name: "IDX"
+    us: true
+    de: "check_proxy"
+    ru: true
+    local: true
+    auth: api_key
+    free: false
+    cost: "from 5 RUB/request"
+    usage: "Document verification, identity verification"
+    note: "US access may require RU proxy via Beget"
+
 llm_models:
   via_router:
     endpoint_us: "http://149.33.4.37:8080/v1/chat/completions"
@@ -612,9 +699,9 @@ git_sync:
 
 summary:
   infrastructure_points: 4
-  mcp_servers_unique: 21
+  mcp_servers_unique: 22
   python_scripts: 37
-  api_integrations: 19
+  api_integrations: 26
   llm_models_via_router: 13
   llm_models_local_ollama: 8
   docker_containers_ru: 20
