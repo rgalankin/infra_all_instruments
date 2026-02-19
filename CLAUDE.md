@@ -10,6 +10,7 @@ summary: Документ представляет собой инструкци
 created: 2026-02-08
 updated: 2026-02-14
 ---
+<!-- CUSTOM FILE: DO NOT REGENERATE WITH /init - this will overwrite all settings -->
 # CLAUDE.MD
 
 Инструкции для Claude Code при работе с данным репозиторием.
