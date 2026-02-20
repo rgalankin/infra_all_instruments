@@ -30,11 +30,11 @@ owner: Roman Galankin
 
 ---
 
-## 1. MCP-серверы
+## 1. MCP-СЕРВЕРЫ
 
 MCP-серверы, доступные через Claude Code, Cursor, Warp, Claude Desktop.
 
-### 1.1 MCP в Claude Code (ai_agents)
+### 1.1 MCP В CLAUDE CODE (AI_AGENTS)
 
 | MCP Server | US | DE | RU | Local | Описание |
 |------------|:--:|:--:|:--:|:-----:|----------|
@@ -47,7 +47,7 @@ MCP-серверы, доступные через Claude Code, Cursor, Warp, Cla
 | headless-browser (Playwright) | V** | - | - | - | Headless browser на US. **UP (healthy), но НЕ добавлен в .mcp.json |
 | calculator | V | V | V | V | Математические вычисления (бесплатно) |
 
-### 1.2 MCP в Cursor
+### 1.2 MCP В CURSOR
 
 | MCP Server | US | DE | RU | Local | Описание |
 |------------|:--:|:--:|:--:|:-----:|----------|
@@ -67,7 +67,7 @@ MCP-серверы, доступные через Claude Code, Cursor, Warp, Cla
 | mcp-postgres | - | - | V | V | PostgreSQL через MCP |
 | mcp-ssh | - | - | V | V | SSH через MCP |
 
-### 1.3 MCP в Warp
+### 1.3 MCP В WARP
 
 | MCP Server | US | DE | RU | Local | Описание |
 |------------|:--:|:--:|:--:|:-----:|----------|
@@ -77,7 +77,7 @@ MCP-серверы, доступные через Claude Code, Cursor, Warp, Cla
 | Notion | - | - | - | V | Notion docs (12 tools) |
 | Context7 | - | - | - | V | Library docs (2 tools) |
 
-### 1.4 MCP в Claude Desktop
+### 1.4 MCP В CLAUDE DESKTOP
 
 | MCP Server | US | DE | RU | Local | Описание |
 |------------|:--:|:--:|:--:|:-----:|----------|
@@ -85,7 +85,7 @@ MCP-серверы, доступные через Claude Code, Cursor, Warp, Cla
 | linear | - | - | - | V | Linear (управление задачами) |
 | Macuse | - | - | - | V | macOS интеграция |
 
-### 1.5 MCP на серверах (Docker)
+### 1.5 MCP НА СЕРВЕРАХ (DOCKER)
 
 | MCP Server | US | DE | RU | Local | Порт | Описание |
 |------------|:--:|:--:|:--:|:-----:|------|----------|
@@ -97,11 +97,11 @@ MCP-серверы, доступные через Claude Code, Cursor, Warp, Cla
 
 ---
 
-## 2. Python-скрипты
+## 2. PYTHON-СКРИПТЫ
 
 Скрипты из `/Users/mac/Documents/ai_agents/scripts/`.
 
-### 2.1 B24 (Bitrix24)
+### 2.1 B24 (BITRIX24)
 
 | Скрипт | US | DE | RU | Local | Описание |
 |--------|:--:|:--:|:--:|:-----:|----------|
@@ -113,7 +113,7 @@ MCP-серверы, доступные через Claude Code, Cursor, Warp, Cla
 | b24-register-chatbots.sh | - | - | - | V | Регистрация чат-ботов в B24 |
 | b24-register-chatbots-batch2.sh | - | - | - | V | Регистрация чат-ботов (batch 2) |
 
-### 2.2 Email
+### 2.2 EMAIL
 
 | Скрипт | US | DE | RU | Local | Описание |
 |--------|:--:|:--:|:--:|:-----:|----------|
@@ -126,7 +126,7 @@ MCP-серверы, доступные через Claude Code, Cursor, Warp, Cla
 | test-email-poller.sh | - | - | - | V | Тест email poller |
 | create_mailboxes.py | - | - | - | V | Создание почтовых ящиков |
 
-### 2.3 Google API
+### 2.3 GOOGLE API
 
 | Скрипт | US | DE | RU | Local | Описание |
 |--------|:--:|:--:|:--:|:-----:|----------|
@@ -140,7 +140,7 @@ MCP-серверы, доступные через Claude Code, Cursor, Warp, Cla
 | google-translate.py | - | - | - | V | Google Translation API |
 | google-vision-ocr.py | - | - | - | V | Google Vision OCR API |
 
-### 2.4 KB (База знаний)
+### 2.4 KB (БАЗА ЗНАНИЙ)
 
 | Скрипт | US | DE | RU | Local | Описание |
 |--------|:--:|:--:|:--:|:-----:|----------|
@@ -152,7 +152,7 @@ MCP-серверы, доступные через Claude Code, Cursor, Warp, Cla
 | kb-add-crossrefs.py | - | - | - | V | Добавление перекрестных ссылок |
 | kb-process.py | - | - | - | V | Обработка KB-документов |
 
-### 2.5 Прочие
+### 2.5 ПРОЧИЕ
 
 | Скрипт | US | DE | RU | Local | Описание |
 |--------|:--:|:--:|:--:|:-----:|----------|
@@ -166,7 +166,7 @@ MCP-серверы, доступные через Claude Code, Cursor, Warp, Cla
 
 ---
 
-## 3. API-интеграции
+## 3. API-ИНТЕГРАЦИИ
 
 | API | US | DE | RU | Local | Auth | Бесплатно | Описание |
 |-----|:--:|:--:|:--:|:-----:|------|:---------:|----------|
@@ -201,9 +201,9 @@ MCP-серверы, доступные через Claude Code, Cursor, Warp, Cla
 
 ---
 
-## 4. LLM-реестр
+## 4. LLM-РЕЕСТР
 
-### 4.1 Через LLM Router (v2.0.0)
+### 4.1 ЧЕРЕЗ LLM ROUTER (V2.0.0)
 
 LLM Router: единый OpenAI-совместимый `/v1/chat/completions` endpoint.
 
@@ -230,7 +230,7 @@ LLM Router: единый OpenAI-совместимый `/v1/chat/completions` en
 
 **Middleware:** Logging (SQLite), Fallback chains, Tier routing (T1-T4), Budget alerts
 
-### 4.2 Локальные модели (Ollama, только Local Mac)
+### 4.2 ЛОКАЛЬНЫЕ МОДЕЛИ (OLLAMA, ТОЛЬКО LOCAL MAC)
 
 | Модель | Параметры | Размер | Назначение | Рус. |
 |--------|----------|--------|-----------|:----:|
@@ -245,14 +245,14 @@ LLM Router: единый OpenAI-совместимый `/v1/chat/completions` en
 
 **Ollama endpoint:** `http://localhost:11434`
 
-### 4.3 Облачные (OpenRouter, прямой доступ)
+### 4.3 ОБЛАЧНЫЕ (OPENROUTER, ПРЯМОЙ ДОСТУП)
 
 | Модель | Параметры | Контекст | Рус. | Назначение |
 |--------|----------|---------|:----:|-----------|
 | DeepSeek R1T2 Chimera | 671B MoE | 164K | 8/10 | Сложные задачи, reasoning |
 | DeepSeek R1 0528 | 671B | 164K | 8/10 | Альтернативный reasoning |
 
-### 4.4 Pricing (LLM Router, за 1M токенов, USD)
+### 4.4 PRICING (LLM ROUTER, ЗА 1M ТОКЕНОВ, USD)
 
 | Модель | Input | Output |
 |--------|------:|-------:|
@@ -268,9 +268,9 @@ LLM Router: единый OpenAI-совместимый `/v1/chat/completions` en
 
 ---
 
-## 5. Docker-контейнеры / Сервисы
+## 5. DOCKER-КОНТЕЙНЕРЫ / СЕРВИСЫ
 
-### 5.1 RU (Beget, 82.202.129.193)
+### 5.1 RU (BEGET, 82.202.129.193)
 
 20+ контейнеров, два Docker-стека: `net_proxy` (public) и `net_internal` (private).
 
@@ -298,7 +298,7 @@ LLM Router: единый OpenAI-совместимый `/v1/chat/completions` en
 | XRay relay | 6 портов | - | Средняя | Dokodemo-door -> US/DE |
 | Egress-tunnel | 10808, 1080 | - | Высокая | VLESS -> US (HTTP/SOCKS5 proxy) |
 
-### 5.2 US (ISHosting, 149.33.4.37)
+### 5.2 US (ISHOSTING, 149.33.4.37)
 
 Hub-сервер: egress + LLM + DB + RAG + CLI.
 
@@ -322,7 +322,7 @@ Hub-сервер: egress + LLM + DB + RAG + CLI.
 - codex 0.101.0
 - gemini 0.28.2
 
-### 5.3 DE (ISHosting VPN, 38.244.128.203)
+### 5.3 DE (ISHOSTING VPN, 38.244.128.203)
 
 | Сервис | Порт | Критичность | Описание |
 |--------|------|:-----------:|----------|
@@ -330,7 +330,7 @@ Hub-сервер: egress + LLM + DB + RAG + CLI.
 | Dokodemo-door relay | 50443, 50382 | Средняя | Multi-hop relay -> US |
 | nginx | 443 | Средняя | geo-routing для Reality SNI |
 
-### 5.4 Local Mac (iMac Pro 2017)
+### 5.4 LOCAL MAC (IMAC PRO 2017)
 
 | Сервис | Порт | Описание |
 |--------|------|----------|
@@ -342,7 +342,7 @@ Hub-сервер: egress + LLM + DB + RAG + CLI.
 
 ---
 
-## 6. Железо
+## 6. ЖЕЛЕЗО
 
 | Параметр | US (ISHosting) | DE (ISHosting VPN) | RU (Beget) | Local (iMac Pro 2017) |
 |----------|:--------------:|:------------------:|:----------:|:--------------------:|
@@ -361,7 +361,7 @@ Hub-сервер: egress + LLM + DB + RAG + CLI.
 
 ---
 
-## 7. Сводная статистика
+## 7. СВОДНАЯ СТАТИСТИКА
 
 | Метрика | Значение |
 |---------|----------|
@@ -378,7 +378,7 @@ Hub-сервер: egress + LLM + DB + RAG + CLI.
 
 ---
 
-## 8. Git Sync (Mac -> US)
+## 8. GIT SYNC (MAC -> US)
 
 | Параметр | Значение |
 |----------|----------|
@@ -391,7 +391,7 @@ Hub-сервер: egress + LLM + DB + RAG + CLI.
 
 ---
 
-## Links (Internal)
+## LINKS (INTERNAL)
 
 - [[infra_all_instruments/registry__20260210220000-01|Registry]]
 - [[infra_all_instruments/docs/infrastructure/_index__20260210220000-03|Реестр инфраструктуры]]
