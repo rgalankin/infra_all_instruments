@@ -11,7 +11,7 @@ tags: [ai/llm, eng/infrastructure, platform/docker]
 source: claude-opus-4-6
 ai_weight: high
 created: 2026-02-19
-updated: 2026-02-19
+updated: 2026-02-20
 category: "AI - LLM - Роутер"
 version: "v2.0.0"
 criticality: high
@@ -29,7 +29,7 @@ cost: "бесплатно (self-hosted)"
 | Конфиг | `config/config.yml` (pricing, tiers, fallback chains, agent mapping) |
 | US-сервер | 149.33.4.37:8080 (production) |
 | iMac | localhost:8000 (development) |
-| Beget VPS | 82.202.129.193 (подготовлен к деплою) |
+| Beget VPS | 82.202.129.193:8080 (production, deployed 2026-02-20) |
 | Docker | python:3.11-slim, ~50-100 MB RAM |
 | Endpoint | `/v1/chat/completions` (OpenAI-compatible) |
 | Список моделей | `/v1/models` (13 моделей) |
@@ -169,3 +169,4 @@ curl http://localhost:8000/v1/models
 ## ИСТОРИЯ
 
 - 2026-02-19: Создана карточка. LLM Router v2.0.0 с полным набором middleware (logging, fallback, tier routing, budget alerts). 6 провайдеров, 13 моделей. Деплой на US-сервере (149.33.4.37:8080).
+- 2026-02-20: Деплой на Beget VPS (82.202.129.193:8080). Все 6 провайдеров, 15 моделей. Middleware (logging SQLite, fallback, tier, budget). Geo-ограничения не обнаружены (OpenAI, Anthropic доступны напрямую). Gemini 400 из RU, fallback на DeepSeek работает. RAM: 43 MB / 128 MB limit.
