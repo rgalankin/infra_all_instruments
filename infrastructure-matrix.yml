@@ -1,5 +1,6 @@
 # Infrastructure Matrix - YAML version
 # Generated: 2026-02-19
+# Updated: 2026-02-20 (fixed false API marks: FSSP, api-parser, SpectrumData, IDX)
 # Source: infrastructure-matrix__20260219.md
 # Designations: true = deployed, false = not deployed, null = unknown, planned = prepared
 
@@ -114,6 +115,16 @@ mcp_servers:
     ru: false
     local: true
     description: "Semantic KB search (Qdrant + PostgreSQL)"
+    note: "US: systemd service NOT running (needs restart)"
+
+  - id: headless-browser
+    tool: claude-code
+    us: true
+    de: false
+    ru: false
+    local: false
+    description: "Headless browser (Playwright) on US"
+    note: "UP and healthy on US, but NOT added to .mcp.json"
 
   - id: calculator
     tool: claude-code
@@ -411,15 +422,15 @@ api_integrations:
 
   - id: fssp
     name: "FSSP API (ФССП)"
-    us: true
-    de: "check_proxy"
-    ru: true
-    local: true
+    us: planned
+    de: planned
+    ru: planned
+    local: planned
     auth: null
     free: limited
     free_note: "~500 requests/day"
     usage: "Enforcement proceedings debt check"
-    note: "US access may require RU proxy via Beget"
+    note: "NOT integrated. Only planned. Was falsely marked as deployed (fixed 2026-02-20)"
 
   - id: cbr
     name: "Bank of Russia API (Банк России)"
@@ -443,39 +454,39 @@ api_integrations:
 
   - id: api_parser
     name: "api-parser.ru"
-    us: true
-    de: "check_proxy"
-    ru: true
-    local: true
+    us: planned
+    de: planned
+    ru: planned
+    local: planned
     auth: api_key
     free: false
     cost: "990 RUB/month"
     usage: "Web scraping, monitoring, data collection"
-    note: "US access may require RU proxy via Beget"
+    note: "NOT installed. Was falsely marked as deployed (fixed 2026-02-20)"
 
   - id: spectrumdata
     name: "SpectrumData"
-    us: true
-    de: "check_proxy"
-    ru: true
-    local: true
+    us: planned
+    de: planned
+    ru: planned
+    local: planned
     auth: api_key
     free: false
     cost: "~10 RUB/request"
     usage: "Person/company verification: passports, INN, vehicles, courts"
-    note: "US access may require RU proxy via Beget"
+    note: "NOT installed. Was falsely marked as deployed (fixed 2026-02-20)"
 
   - id: idx
     name: "IDX"
-    us: true
-    de: "check_proxy"
-    ru: true
-    local: true
+    us: planned
+    de: planned
+    ru: planned
+    local: planned
     auth: api_key
     free: false
     cost: "from 5 RUB/request"
     usage: "Document verification, identity verification"
-    note: "US access may require RU proxy via Beget"
+    note: "NOT installed. Was falsely marked as deployed (fixed 2026-02-20)"
 
 llm_models:
   via_router:
@@ -699,7 +710,7 @@ git_sync:
 
 summary:
   infrastructure_points: 4
-  mcp_servers_unique: 22
+  mcp_servers_unique: 23  # +headless-browser
   python_scripts: 37
   api_integrations: 26
   llm_models_via_router: 13
