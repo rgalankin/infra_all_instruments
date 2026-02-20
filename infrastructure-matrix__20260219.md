@@ -10,7 +10,7 @@ tags: [eng/infrastructure, infra/inventory, content/registry, process/governance
 source: claude-opus-4-6
 ai_weight: high
 created: 2026-02-19
-updated: 2026-02-19
+updated: 2026-02-20
 owner: Roman Galankin
 ---
 # INFRASTRUCTURE MATRIX
@@ -43,7 +43,8 @@ MCP-серверы, доступные через Claude Code, Cursor, Warp, Cla
 | github | - | - | - | V | GitHub API (issues, PRs, repos) |
 | brave-search | - | - | - | V | Brave Search API (веб-поиск) |
 | google-workspace | - | - | - | V | 11 сервисов Google Workspace (complete tier) |
-| kb-server | V | - | - | V | Семантический поиск KB (Qdrant + PostgreSQL) |
+| kb-server | V* | - | - | V | Семантический поиск KB (Qdrant + PostgreSQL). *systemd не запущен на US |
+| headless-browser (Playwright) | V** | - | - | - | Headless browser на US. **UP (healthy), но НЕ добавлен в .mcp.json |
 | calculator | V | V | V | V | Математические вычисления (бесплатно) |
 
 ### 1.2 MCP в Cursor
@@ -189,14 +190,14 @@ MCP-серверы, доступные через Claude Code, Cursor, Warp, Cla
 | GigaChat API (Sber) | - | - | V | - | OAuth2 | Лимит | LLM для CreditWise чата |
 | ElevenLabs API | - | - | - | V | API Key | Лимит | Text-to-Speech |
 | DaData API | V | V | V | V | API Key | 10K/день | Стандартизация адресов, ИНН, ФИО, реквизиты компаний |
-| ФССП API | V | V* | V | V | - | ~500/день | Проверка задолженностей по исполнительным производствам |
+| ФССП API | P | P | P | P | - | ~500/день | Проверка задолженностей по исполнительным производствам (НЕ интегрирован, планируется) |
 | Банк России API | V | V | V | V | - | V | Курсы валют, реестры кредитных организаций, справочники |
 | Росфинмониторинг API | V | V | V | V | - | V | Проверка по перечню лиц (террористы, экстремисты) |
-| api-parser.ru | V | V* | V | V | API Key | - (990 р/мес) | Парсинг сайтов, мониторинг, сбор данных |
-| SpectrumData | V | V* | V | V | API Key | - (~10 р/запрос) | Проверка физ/юрлиц: паспорта, ИНН, авто, суды |
-| IDX | V | V* | V | V | API Key | - (от 5 р/запрос) | Верификация документов, идентификация личности |
+| api-parser.ru | P | P | P | P | API Key | - (990 р/мес) | Парсинг сайтов, мониторинг, сбор данных (НЕ установлен) |
+| SpectrumData | P | P | P | P | API Key | - (~10 р/запрос) | Проверка физ/юрлиц: паспорта, ИНН, авто, суды (НЕ установлен) |
+| IDX | P | P | P | P | API Key | - (от 5 р/запрос) | Верификация документов, идентификация личности (НЕ установлен) |
 
-> **V*** = доступность с US-сервера не подтверждена. Российские API (ФССП, api-parser, SpectrumData, IDX) могут требовать прокси через RU (Beget) для доступа с зарубежных серверов.
+> **ИСПРАВЛЕНО 2026-02-20:** api-parser.ru, SpectrumData, IDX, ФССП API ранее имели ложные V-отметки. Реально НЕ установлены/интегрированы ни на одной точке. Статус изменён на P (планируется).
 
 ---
 
