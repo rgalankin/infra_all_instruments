@@ -6,6 +6,8 @@ source: roman
 ai_weight: normal
 created: 2026-02-15
 updated: 2026-02-15
+type: note
+summary: 'id: 20260214131534 title: infra knowledge keeper status: active source: roman ai_weight: normal'
 ---
 ---
 id: 20260214131534
