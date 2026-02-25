@@ -704,7 +704,7 @@ git_sync:
   cron: "*/5 * * * *"
   repos_count: 16
   on_md_change: "auto-run kb-indexer.py for Qdrant"
-  embedding_provider: "SiliconFlow"
+  embedding_provider: "DeepInfra"
   embedding_model: "Qwen3-Embedding-8B"
   embedding_dims: 4096
 
