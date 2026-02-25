@@ -1,6 +1,6 @@
 # Infrastructure Matrix - YAML version
 # Generated: 2026-02-19
-# Updated: 2026-02-20 (fixed false API marks: FSSP, api-parser, SpectrumData, IDX)
+# Updated: 2026-02-25 (RAG provider: SiliconFlow (blocked) -> DeepInfra (primary). Added Fireworks AI reserve, DeepInfra, reranker config)
 # Source: infrastructure-matrix__20260219.md
 # Designations: true = deployed, false = not deployed, null = unknown, planned = prepared
 
@@ -365,11 +365,40 @@ api_integrations:
 
   - id: siliconflow
     name: "SiliconFlow API"
+    us: false
+    local: false
+    auth: api_key
+    free: false
+    status: "discontinued"
+    note: "Заблокирован с 2026-02-24 (HTTP 403, geo-блок, китайский провайдер). Все вызовы прекращены."
+    usage: "Ранее: Embeddings (Qwen3-Embedding-8B, 4096 dims)"
+
+  - id: deepinfra
+    name: "DeepInfra API"
     us: true
     local: true
     auth: api_key
-    free: limited
-    usage: "Embeddings (Qwen3-Embedding-8B, 4096 dims)"
+    free: false
+    status: "active_primary"
+    balance_usd: 10.00
+    auto_topup: "$10 when < $5"
+    usage: "Embeddings: Qwen3-Embedding-8B (4096d, $0.05/1M). Reranker: Qwen3-Reranker-8B ($0.05/1M). ОСНОВНОЙ провайдер с 2026-02-25"
+    endpoints:
+      embedding: "https://api.deepinfra.com/v1/openai/embeddings"
+      reranker: "https://api.deepinfra.com/v1/inference/Qwen/Qwen3-Reranker-8B"
+
+  - id: fireworks_ai
+    name: "Fireworks AI API"
+    us: true
+    local: true
+    auth: api_key
+    free: false
+    status: "active_reserve"
+    balance_usd: 5.00
+    usage: "Embeddings: accounts/fireworks/models/qwen3-embedding-8b ($0.10/1M). Reranker: accounts/fireworks/models/qwen3-reranker-8b ($0.10/1M). РЕЗЕРВ с 2026-02-25"
+    endpoints:
+      embedding: "https://api.fireworks.ai/inference/v1/embeddings"
+      reranker: "https://api.fireworks.ai/inference/v1/rerank"
 
   - id: brave_search
     name: "Brave Search API"
@@ -704,9 +733,14 @@ git_sync:
   cron: "*/5 * * * *"
   repos_count: 16
   on_md_change: "auto-run kb-indexer.py for Qdrant"
-  embedding_provider: "SiliconFlow"
-  embedding_model: "Qwen3-Embedding-8B"
+  embedding_provider: "DeepInfra"  # Сменён с SiliconFlow 2026-02-25 (SiliconFlow заблокирован HTTP 403)
+  embedding_provider_reserve: "Fireworks AI"  # Резерв (те же модели, 2x дороже)
+  embedding_model: "Qwen/Qwen3-Embedding-8B"
   embedding_dims: 4096
+  embedding_endpoint: "https://api.deepinfra.com/v1/openai/embeddings"
+  reranker_model: "Qwen/Qwen3-Reranker-8B"
+  reranker_endpoint: "https://api.deepinfra.com/v1/inference/Qwen/Qwen3-Reranker-8B"
+  rag_quality: "P@5=0.96 (Phase 3: multi-query + RRF k=60 + reranker)"
 
 summary:
   infrastructure_points: 4
