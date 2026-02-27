@@ -244,7 +244,7 @@ project/
    - README.md: нет placeholder, заполнены все разделы
    - ARCHITECTURE__20260210103632-01.md: нет placeholder, status: active
    - CLAUDE.md: нет placeholder, минимальная версия
-2. Обновление метаданных проекта (если используется PROJECT-STATUS.md)
+2. Обновление метаданных проекта (если используется PROJECT-STATUS__biz-na-neyronah-status__20260227.md)
 3. Сообщение пользователю:
    "✅ Проект инициализирован!
    - README.md: заполнен
