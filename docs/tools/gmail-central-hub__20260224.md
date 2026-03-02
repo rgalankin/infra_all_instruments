@@ -1,11 +1,13 @@
 ---
 id: gmail-central-hub
 title: Gmail как центральный почтовый хаб CEO
+summary: >
+  Техническая документация по настройке Gmail (5427611@gmail.com) как центрального хаба для сбора и отправки почты с нескольких адресов
 type: tool-doc
 status: active
 tags: [gmail, email, google-workspace, platform/yandex, beget, hub]
 source: manual
-summary: Техническая документация по настройке Gmail (5427611@gmail.com) как центрального хаба для сбора и отправки почты с нескольких адресов
+ai_weight: normal
 created: 2026-02-24
 updated: 2026-02-24
 ---
