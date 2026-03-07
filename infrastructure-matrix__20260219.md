@@ -10,7 +10,7 @@ tags: [eng/infrastructure, infra/inventory, content/registry, process/governance
 source: claude-opus-4-6
 ai_weight: high
 created: 2026-02-19
-updated: 2026-02-20
+updated: 2026-03-08
 owner: Roman Galankin
 ---
 # INFRASTRUCTURE MATRIX
@@ -302,33 +302,40 @@ LLM Router: единый OpenAI-совместимый `/v1/chat/completions` en
 
 Hub-сервер: egress + LLM + DB + RAG + CLI.
 
-| Сервис | Порт | Критичность | Описание |
-|--------|------|:-----------:|----------|
-| Egress Proxy (Squid) | 3128 | Высокая | HTTP/HTTPS прокси (US IP для LLM API) |
-| LLM Router (FastAPI) | 8080 | Высокая | Маршрутизация LLM-запросов (6 провайдеров) |
-| Hub Traefik v3.6.8 | 8444 | Высокая | L7 reverse proxy за nginx |
-| Hub n8n v2.7.5 | 5678 | Высокая | Workflow engine (n8n-usa.fingroup.ru) |
-| Hub MCP-Postgres | 3902 | Средняя | MCP PostgreSQL (HTTP/SSE) |
-| Hub MCP-n8n | 3900 | Средняя | MCP n8n workflow management |
-| Hub PostgreSQL 16 | 5432 | Высокая | PostgreSQL (localhost only) |
-| Hub Qdrant | 6333, 6334 | Высокая | Векторная БД (localhost only) |
-| 3X-UI | 2053, 2096 | Средняя | VPN (VLESS Reality) |
-| Sub-merge | ? | Низкая | Объединение VPN-подписок US+DE |
-| VPN-мониторинг | ? | Низкая | TCP-connect мониторинг VPN |
-| Vaultwarden | ? | Средняя | Менеджер паролей |
+| Сервис | Порт | Критичность | Образ | Описание |
+|--------|------|:-----------:|-------|----------|
+| Egress Proxy (Squid) | 3128 | Высокая | ubuntu/squid:6.10-24.10_edge | HTTP/HTTPS прокси (US IP для LLM API) |
+| LLM Router (FastAPI) | 8080 | Высокая | infra_vps_usa-llm-router:latest | Маршрутизация LLM-запросов (6 провайдеров) |
+| Hub Traefik | 8444 | Высокая | traefik:latest | L7 reverse proxy за nginx |
+| Hub n8n | 5678 | Высокая | n8n:latest | Workflow engine (n8n-usa.fingroup.ru) |
+| Hub MCP-Postgres | 3902 | Средняя | mcp-postgres-usa:v1.0.0 | MCP PostgreSQL (HTTP/SSE) |
+| Hub PostgreSQL 16 | 5432 | Высокая | postgres:16-alpine | PostgreSQL (localhost only) |
+| Hub Qdrant | 6333, 6334 | Высокая | qdrant/qdrant:latest | Векторная БД (localhost only) |
+| Hub WhatsApp API | 3000 | Высокая | whatsapp-api:1.0.0 | WhatsApp Web.js (+79299404077) |
+| Hub WhatsApp API Work | 3001 | Средняя | whatsapp-api:1.0.0 | WhatsApp Web.js (+79347771111) |
+| Hub Telegram Forwarder | 8088 | Высокая | telegram-forwarder | MTProto (+79299404077) |
+| Hub Telegram Forwarder Work | 8089 | Средняя | telegram-forwarder:latest | MTProto (+79347771111) |
+| Hub Asterisk | 5060/udp | Средняя | andrius/asterisk:latest (22.8.2) | SIP relay Novofon/ElevenLabs |
+| Hub Novofon Callback | 8090 | Средняя | hub-novofon-callback:latest | Callback API для исходящих звонков |
+| Headless Browser | - | Средняя | browserless/chrome:latest | Headless Chromium для MCP |
+| Hub Browserless | - | Средняя | ghcr.io/browserless/chromium:latest | Chromium headless (альт.) |
+| OpenClaw Gateway | 18789 | Средняя | ghcr.io/openclaw/openclaw:latest | Multi-channel AI gateway |
+| 3X-UI | 2053, 2096 | Средняя | ghcr.io/mhsanaei/3x-ui:latest | VPN (VLESS Reality) |
+| Vaultwarden | - | Средняя | vaultwarden/server:latest | Менеджер паролей |
 
-**CLI tools на US:**
-- claude 2.1.42
-- codex 0.101.0
-- gemini 0.28.2
+**CLI tools на US (обновлено 2026-03-08):**
+- claude-code 2.1.71
+- codex 0.111.0
+- gemini-cli 0.32.1
 
 ### 5.3 DE (ISHOSTING VPN, 38.244.128.203)
 
 | Сервис | Порт | Критичность | Описание |
 |--------|------|:-----------:|----------|
-| 3X-UI (XRay v26.2.6) | 443, 47819 | Средняя | VPN dual-mode: Reality + XHTTP CDN |
+| 3X-UI (Xray 26.2.6) | 443, 47819 | Средняя | VPN dual-mode: Reality + XHTTP CDN |
 | Dokodemo-door relay | 50443, 50382 | Средняя | Multi-hop relay -> US |
 | nginx | 443 | Средняя | geo-routing для Reality SNI |
+| fail2ban | - | Средняя | SSH brute-force protection (6452 total bans) |
 
 ### 5.4 LOCAL MAC (IMAC PRO 2017)
 
@@ -346,18 +353,21 @@ Hub-сервер: egress + LLM + DB + RAG + CLI.
 
 | Параметр | US (ISHosting) | DE (ISHosting VPN) | RU (Beget) | Local (iMac Pro 2017) |
 |----------|:--------------:|:------------------:|:----------:|:--------------------:|
-| CPU | Xeon 4x2.20 GHz | 1 Core | ? | 8-Core Xeon W |
-| RAM | 8 GB | 960 MiB | ? | 32 GB |
-| Disk | 50 GB SSD | 9.8 GB SSD | ? | SSD (объем ?) |
-| OS | Ubuntu 24.04.4 LTS | Debian 12 | Ubuntu 24.04 LTS | macOS (iMac Pro 2017) |
-| IP | 149.33.x.x | 38.244.x.x | 82.202.x.x | localhost |
-| Хостинг | ISHosting | ISHosting | Beget | - |
-| Стоимость | $39.99/мес | $6.99/мес | ? | - |
-| Панель | HestiaCP | - | - | - |
-| Docker | v29.2.1 | ? | V | Docker Desktop |
-| Firewall | UFW | ? | UFW | macOS Firewall |
+| CPU | Xeon Gold 6154 @ 3.00GHz (4c) | Xeon E5-2670 v3 @ 2.30GHz (1c) | AMD EPYC 7763 64-Core (virt) | 8-Core Xeon W |
+| RAM | 7.8 GB | 960 MiB | 7.8 GB | 32 GB |
+| Disk | 99 GB SSD (79% used) | 9.8 GB SSD (49% used) | 87 GB (50% used) | SSD |
+| OS | Ubuntu 24.04.4 LTS | Debian 12 (bookworm) | Ubuntu 24.04.4 LTS | macOS 15.7.3 Sequoia |
+| Kernel | - | 6.1.0-43-amd64 | - | - |
+| IP | 149.33.4.37 | 38.244.128.203 | 82.202.129.193 | localhost |
+| Хостинг | ISHosting | ISHosting | Beget Cloud | - |
+| Стоимость | $39.99/мес | $6.99/мес | ~70 руб/день (~2130 руб/мес) | - |
+| Панель | HestiaCP | - | cp.beget.com (Cloud) | - |
+| Docker | v29.3.0, Compose v5.1.0 | - | v29.3.0, Compose v5.1.0 | Docker Desktop 29.2.0 |
+| Firewall | UFW | UFW | UFW + fail2ban | macOS Firewall |
+| SSH sudo | NOPASSWD | root by key | NOPASSWD (настроен 2026-03-08) | - |
+| Node.js | - | - | v24.14.0 | v25.8.0 |
 
-> Примечание: точные характеристики Beget не указаны в имеющейся документации. RAM и CPU требуют уточнения.
+> Обновлено 2026-03-08. Beget: CPU AMD EPYC 7763, 7.8GB RAM, 87GB disk, ~2130 руб/мес. Баланс 1440.66 руб (20 дней до блокировки).
 
 ---
 
@@ -366,15 +376,17 @@ Hub-сервер: egress + LLM + DB + RAG + CLI.
 | Метрика | Значение |
 |---------|----------|
 | Точек инфраструктуры | 4 (US, DE, RU, Local) |
-| MCP-серверов (уникальных) | 22 |
+| MCP-серверов (уникальных) | 23 |
 | Python-скриптов | 37 |
 | API-интеграций | 26 |
 | LLM-моделей (через Router) | 13+ (+ 400 через OpenRouter) |
 | Локальных моделей (Ollama) | 8 |
-| Docker-контейнеров (RU) | 20+ |
-| Docker-контейнеров (US) | 12+ |
-| Docker-контейнеров (DE) | 3 |
+| Docker-контейнеров (RU) | 15 |
+| Docker-контейнеров (US) | 17 |
+| Docker-контейнеров (DE) | 0 (systemd services) |
 | Docker-контейнеров (Local) | 3-4 |
+
+> Обновлено 2026-03-08 по результатам полного аудита всех платформ.
 
 ---
 
