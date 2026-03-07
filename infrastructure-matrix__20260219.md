@@ -277,11 +277,11 @@ LLM Router: единый OpenAI-совместимый `/v1/chat/completions` en
 | Сервис | Порт | Домен | Критичность | Описание |
 |--------|------|-------|:-----------:|----------|
 | Traefik v3.1 | 80, 443 | *.fingroup.ru | Высокая | Reverse proxy, HTTPS, Let's Encrypt |
-| n8n (production) | 5678 | n8n.fingroup.ru | Очень высокая | Workflow engine |
+| n8n 2.10.4 (production) | 5678 | n8n.fingroup.ru | Очень высокая | Workflow engine (custom image + ffmpeg) |
 | n8n (development) | 5678 | n8n-dev.fingroup.ru | Средняя | Dev-инстанс |
 | PostgreSQL | 5432 | - | Высокая | Основная СУБД (n8n, credoserv, telegram) |
 | Qdrant | 6333 | - | Высокая | Векторная БД для RAG |
-| Dify | - | dify.fingroup.ru | Высокая | AI-платформа (API, worker, nginx, redis, pg) |
+| Dify 1.13.0 | - | dify.fingroup.ru | Высокая | AI-платформа (API, worker, nginx, redis, pg) |
 | Portainer | - | portainer.fingroup.ru | Средняя | Docker UI |
 | pgAdmin | - | pgadmin.fingroup.ru | Средняя | PostgreSQL UI |
 | MCP-n8n (prod) | 3900 | - | Высокая | MCP для n8n (WireGuard/SSH) |
@@ -387,6 +387,7 @@ Hub-сервер: egress + LLM + DB + RAG + CLI.
 | Docker-контейнеров (Local) | 3-4 |
 
 > Обновлено 2026-03-08 по результатам полного аудита всех платформ.
+> Phase 2 (2026-03-08): Dify 1.11.2->1.13.0, n8n 2.4.8->2.10.4, pipx 1.8.0 на Mac.
 
 ---
 

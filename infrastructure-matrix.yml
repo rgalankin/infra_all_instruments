@@ -78,6 +78,9 @@ infrastructure_points:
     sudo: "NOPASSWD (configured 2026-03-08 via Docker mount)"
     ssh_note: "Direct SSH from Mac blocked (traffic via US VPN). Use US VPS as proxy."
     containers_count: 15
+    dify_version: "1.13.0"
+    n8n_version: "2.10.4"
+    n8n_image: "n8n-custom:latest (base n8nio/n8n:2.10.4)"
     last_audit: "2026-03-08"
 
   local:
