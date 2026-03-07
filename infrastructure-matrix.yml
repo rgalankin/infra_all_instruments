@@ -743,7 +743,7 @@ docker_services:
         image: "ghcr.io/mhsanaei/3x-ui:latest"
         port: "2053,2096"
         criticality: medium
-        note: "VPN (VLESS Reality)"
+        note: "VPN (VLESS Reality). nginx stream 443-routing: mail-us→xray_reality(8888), vpn-us→nginx_backend(8443), default→xray_reality(8888). Backup: 443-routing.conf.bak"
       - name: vaultwarden
         image: "vaultwarden/server:latest"
         criticality: medium

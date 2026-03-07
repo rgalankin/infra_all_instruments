@@ -320,7 +320,7 @@ Hub-сервер: egress + LLM + DB + RAG + CLI.
 | Headless Browser | - | Средняя | browserless/chrome:latest | Headless Chromium для MCP |
 | Hub Browserless | - | Средняя | ghcr.io/browserless/chromium:latest | Chromium headless (альт.) |
 | OpenClaw Gateway | 18789 | Средняя | ghcr.io/openclaw/openclaw:latest | Multi-channel AI gateway |
-| 3X-UI | 2053, 2096 | Средняя | ghcr.io/mhsanaei/3x-ui:latest | VPN (VLESS Reality) |
+| 3X-UI | 2053, 2096 | Средняя | ghcr.io/mhsanaei/3x-ui:latest | VPN (VLESS Reality). nginx stream SNI: mail-us→xray_reality, vpn-us→nginx_backend, default→xray_reality |
 | Vaultwarden | - | Средняя | vaultwarden/server:latest | Менеджер паролей |
 
 **CLI tools на US (обновлено 2026-03-08):**
