@@ -1,5 +1,5 @@
 ---
-id: "20260315-01"
+id: "20260315063001-01"
 title: "Интеграция: Git-sync двусторонняя синхронизация"
 summary: >
   Трёхсторонняя синхронизация git-репозиториев между VPS USA, Beget и iMac
@@ -8,7 +8,7 @@ summary: >
 type: spec
 status: active
 tags: [eng/integration, ops/sync, ops/git]
-source: sofia
+source: claude-opus-4-6
 ai_weight: high
 created: 2026-03-15
 updated: 2026-03-15

@@ -1,5 +1,5 @@
 ---
-id: "20260315-03"
+id: "20260315063003-03"
 title: "Интеграция: Telegram Channel @biznaneyronah"
 summary: >
   Публикация контента в Telegram-канал @biznaneyronah через бота @rgalankin_bot.
@@ -7,7 +7,7 @@ summary: >
 type: spec
 status: active
 tags: [eng/integration, social/telegram]
-source: sofia
+source: claude-opus-4-6
 ai_weight: high
 created: 2026-03-15
 updated: 2026-03-15
