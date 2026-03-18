@@ -412,3 +412,4 @@ Hub-сервер: egress + LLM + DB + RAG + CLI.
 - [[ai_agents/docs/neurocompany/tools-registry__20260218133000-01|TOOLS_REGISTRY]]
 - [[infra_all_instruments/docs/neural-networks/_index__20260210220000-05|Реестр нейросетей]]
 - [[infra_all_instruments/docs/mcp/_index__20260210220000-06|Реестр MCP-серверов]]
+
