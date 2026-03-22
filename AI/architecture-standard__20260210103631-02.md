@@ -34,7 +34,7 @@ updated: 2026-02-09
 | **Имя** | `ARCHITECTURE__20260210103632-01.md` | Индустриальный стандарт де-факто (awesome-architecture-md, Матклад) |
 | **Регистр** | UPPERCASE для корня | Стандартная конвенция для tool-entry файлов |
 | **ID-суффикс** | ЗАПРЕЩЁН | `ARCHITECTURE__20260209-01.md` нестандартен и не распознаётся |
-| **Расположение** | Корень репозитория | Основное местоположение; альтернатива: `docs/architecture.md` (lowercase) |
+| **Расположение** | Корень репозитория | Основное местоположение; альтернатива: `docs/architecture__kb-task-dispatcher-architecture-20260321180000.md` (lowercase) |
 
 **Tool-Entry File Exception:** `ARCHITECTURE__20260210103632-01.md` относится к категории tool-entry файлов и является исключением из правила именования с ID-суффиксами согласно [[agents-format__20260209220613-05|AGENTS-Format]].
 
@@ -255,7 +255,7 @@ updated: YYYY-MM-DD
 ## ПРИМЕРЫ ИЗ ИНДУСТРИИ
 
 ### RUST-ANALYZER — ЭТАЛОННЫЙ ПРИМЕР
-[GitHub: rust-analyzer/ARCHITECTURE__20260210103632-01.md](https://github.com/rust-lang/rust-analyzer/blob/master/docs/dev/architecture.md)
+[GitHub: rust-analyzer/ARCHITECTURE__20260210103632-01.md](https://github.com/rust-lang/rust-analyzer/blob/master/docs/dev/architecture__kb-task-dispatcher-architecture-20260321180000.md)
 
 Структура:
 - Overview
@@ -310,7 +310,7 @@ updated: YYYY-MM-DD
 
 **Вариант A:** Переместить в корень с переименованием
 ```bash
-mv docs/architecture.md ARCHITECTURE__20260210103632-01.md
+mv docs/architecture__kb-task-dispatcher-architecture-20260321180000.md ARCHITECTURE__20260210103632-01.md
 # Добавить YAML frontmatter
 # Обновить ссылки в других документах
 ```
@@ -319,7 +319,7 @@ mv docs/architecture.md ARCHITECTURE__20260210103632-01.md
 ```markdown
 # ARCHITECTURE
 
-Детальная архитектурная документация находится в [docs/architecture.md](docs/architecture.md).
+Детальная архитектурная документация находится в [docs/architecture__kb-task-dispatcher-architecture-20260321180000.md](docs/architecture__kb-task-dispatcher-architecture-20260321180000.md).
 ```
 
 ---
