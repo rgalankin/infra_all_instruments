@@ -49,7 +49,7 @@ updated: 2026-02-19
 | Claude Sonnet 4.5 | Anthropic | multimodal | $3.00 | $15.00 | 200K | Прямой API | Да | Облако Anthropic | Нет | S |
 | GPT-4o | OpenAI | multimodal | $2.50 | $10.00 | 128K | Прямой API | Нет | Облако OpenAI | $5 стартовые кредиты | S |
 | Gemini 2.5 Pro | Google | multimodal | $1.25 / $2.50 | $10.00 / $15.00 | 1M | Прямой API / AI Studio | Нет | Облако Google | Да, AI Studio (бесплатный tier) | S |
-| DeepSeek R1 | DeepSeek | text (reasoning) | $0.55 (cache $0.14) | $2.19 | 128K | Прямой API / OpenRouter / IS Smart | Да | OpenRouter + IS Smart (149.33.4.37) | OpenRouter free tier | S |
+| DeepSeek R1 | DeepSeek | text (reasoning) | $0.55 (cache $0.14) | $2.19 | 128K | Прямой API / OpenRouter | Да | OpenRouter | OpenRouter free tier | S |
 
 ### Tier A - Сильные модели
 
@@ -61,17 +61,17 @@ updated: 2026-02-19
 | DeepSeek V3 | DeepSeek | text | $0.27 (cache $0.07) | $1.10 | 128K | Прямой API / OpenRouter | Частично | OpenRouter | OpenRouter free tier | A |
 | DeepSeek R1T2 Chimera | TNG (DeepSeek merge) | text (reasoning) | Free tier | Free tier | 164K | OpenRouter | Да | OpenRouter | Да (50 req/day) | A |
 | Codex CLI (o3-mini backend) | OpenAI | code | $1.10 | $4.40 | 200K | Codex CLI | Да | iMac (CLI) | Нет | A |
-| Qwen3 235B | Alibaba | text | $0.30 | $1.20 | 128K | Прямой API / DashScope / OpenRouter | Частично | IS Smart | Да (DashScope free tier) | A |
+| Qwen3 235B | Alibaba | text | $0.30 | $1.20 | 128K | Прямой API / DashScope / OpenRouter | Нет | - | Да (DashScope free tier) | A |
 
 ### Tier B - Бюджетные модели
 
 | Модель | Провайдер | Тип | Input $/1M tok | Output $/1M tok | Контекст | Доступ | Подключена | Сервер | Free tier | Качество |
 |--------|-----------|-----|:--------------:|:---------------:|:--------:|--------|:----------:|--------|:---------:|:--------:|
 | Mistral Large 2 | Mistral AI | text | $2.00 | $6.00 | 128K | Прямой API / OpenRouter | Нет | - | OpenRouter free tier | B |
-| Llama 3.3 70B | Meta | text | Бесплатно (self-hosted) | Бесплатно | 128K | OpenRouter / Groq / IS Smart / SiliconFlow | Да | IS Smart + OpenRouter | Да (Groq, OpenRouter) | B |
-| Qwen3 72B | Alibaba | text | $0.12 | $0.48 | 128K | DashScope / OpenRouter / SiliconFlow | Частично | IS Smart (как Qwen 3) | Да (DashScope, SiliconFlow) | B |
-| Gemma 3 27B | Google | multimodal | Бесплатно (self-hosted) | Бесплатно | 128K | OpenRouter / IS Smart / Ollama | Да | IS Smart | Да (OpenRouter) | B |
-| Phi 4 Reasoning | Microsoft | text (reasoning) | Бесплатно (self-hosted) | Бесплатно | 128K | IS Smart / Azure | Да | IS Smart (149.33.4.37) | Нет (IS Smart = $2.99/мес) | B |
+| Llama 3.3 70B | Meta | text | Бесплатно (self-hosted) | Бесплатно | 128K | OpenRouter / Groq / SiliconFlow | Да | OpenRouter | Да (Groq, OpenRouter) | B |
+| Qwen3 72B | Alibaba | text | $0.12 | $0.48 | 128K | DashScope / OpenRouter / SiliconFlow | Нет | - | Да (DashScope, SiliconFlow) | B |
+| Gemma 3 27B | Google | multimodal | Бесплатно (self-hosted) | Бесплатно | 128K | OpenRouter / Ollama | Нет | - | Да (OpenRouter) | B |
+| Phi 4 Reasoning | Microsoft | text (reasoning) | Бесплатно (self-hosted) | Бесплатно | 128K | Azure / Ollama | Нет | - | Нет | B |
 
 ### Tier C - Дешевые/бесплатные модели
 
@@ -115,11 +115,7 @@ updated: 2026-02-19
 | Claude Sonnet 4.5 | Anthropic API (прямой) | Облако Anthropic | ANTHROPIC_API_KEY | Claude Code (fast mode) |
 | DeepSeek R1T2 Chimera | OpenRouter API | Облако OpenRouter | OPENROUTER_API_KEY | Continue IDE (chat, complex tasks) |
 | DeepSeek R1 0528 | OpenRouter API | Облако OpenRouter | OPENROUTER_API_KEY | Continue IDE (альтернативный reasoning) |
-| DeepSeek R1 (полная) | IS Smart API | VPS ISHosting USA (149.33.4.37) | IS Smart API key (ai.ishosting.com) | n8n workflow (Documentoved) |
-| Qwen 3 (IS Smart) | IS Smart API | VPS ISHosting USA (149.33.4.37) | IS Smart API key | n8n workflow (основная для рус. языка) |
-| Gemma 3 (IS Smart) | IS Smart API | VPS ISHosting USA (149.33.4.37) | IS Smart API key | n8n workflow (общего назначения) |
-| Llama 3.3 (IS Smart) | IS Smart API | VPS ISHosting USA (149.33.4.37) | IS Smart API key | n8n workflow (общего назначения) |
-| Phi 4 Reasoning (IS Smart) | IS Smart API | VPS ISHosting USA (149.33.4.37) | IS Smart API key | n8n workflow (reasoning) |
+| DeepSeek R1 (полная) | OpenRouter API | Облако OpenRouter | OPENROUTER_API_KEY | n8n workflow (Documentoved) |
 | Qwen3 30B | Ollama (локально) | iMac Pro (localhost:11434) | Без ключа (localhost) | Continue IDE, Dify (основная для русского) |
 | Qwen3 Coder 30B | Ollama (локально) | iMac Pro (localhost:11434) | Без ключа (localhost) | Continue IDE (кодинг) |
 | DeepSeek R1 8B | Ollama (локально) | iMac Pro (localhost:11434) | Без ключа (localhost) | Continue IDE (reasoning) |
@@ -134,8 +130,8 @@ updated: 2026-02-19
 |--------|-------------------|--------|-------------|
 | Claude Haiku 3.5 | Anthropic API | Доступен через ANTHROPIC_API_KEY | Не используется активно, можно подключить |
 | DeepSeek V3 | OpenRouter API | Доступен через OPENROUTER_API_KEY | Есть в каталоге OpenRouter, не настроен в Continue |
-| Qwen3 235B | IS Smart / DashScope | Qwen 3 на IS Smart (версия не уточнена) | На IS Smart доступна Qwen 3, точная версия зависит от обновлений провайдера |
-| Qwen3 72B | IS Smart / SiliconFlow | Qwen 3 на IS Smart | Аналогично, доступна через IS Smart как "Qwen 3" |
+| Qwen3 235B | DashScope | Полная версия через DashScope API | Требует DASHSCOPE_API_KEY |
+| Qwen3 72B | DashScope / SiliconFlow | Доступна через DashScope или SiliconFlow | Бесплатный tier на SiliconFlow |
 
 ### Не подключенные, но доступные
 
@@ -160,7 +156,7 @@ updated: 2026-02-19
 | **Ollama (локально)** | Активен | 6 моделей (5 LLM + 1 embedding) | Без ключа | localhost:11434 |
 | **Anthropic API** | Активен | Claude Opus 4.6, Sonnet 4.5, Haiku 3.5 | ANTHROPIC_API_KEY | api.anthropic.com |
 | **OpenRouter** | Активен | DeepSeek R1T2 Chimera, R1 0528, + 100 моделей | OPENROUTER_API_KEY | openrouter.ai/api/v1 |
-| **IS Smart (IS Hosting)** | Активен | Qwen 3, DeepSeek R1, Gemma 3, Llama 3.3, Phi 4 | IS Smart API key | ai.ishosting.com |
+
 | **Groq** | Активен (n8n) | Llama, Mixtral и др. | GROQ_API_KEY | api.groq.com/openai/v1 |
 | **OpenAI API** | Не активен | GPT-4o, GPT-4o mini, Codex, embeddings | OPENAI_API_KEY (нет) | api.openai.com |
 | **Google AI Studio** | Не активен | Gemini 2.5 Pro/Flash, embeddings | Google API key (нет) | generativelanguage.googleapis.com |
@@ -184,8 +180,8 @@ updated: 2026-02-19
 | Кодинг (локально) | Qwen3 Coder 30B | Ollama (iMac) | Бесплатно |
 | Reasoning / глубокий анализ | DeepSeek R1T2 Chimera | OpenRouter | Бесплатно (50 req/day) |
 | Autocomplete в IDE | Qwen 2.5 Coder 1.5B | Ollama (iMac) | Бесплатно |
-| Обработка файлов (Documentoved) | Qwen 3 | IS Smart | $2.99/мес |
-| Атомизация документов | DeepSeek R1 | IS Smart | $2.99/мес |
+| Обработка файлов (Documentoved) | DeepSeek R1 | OpenRouter | Бесплатно (free tier) |
+| Атомизация документов | DeepSeek R1 | OpenRouter | Бесплатно (free tier) |
 | Семантический поиск (текущий) | nomic-embed-text | Ollama (iMac) | Бесплатно |
 | Семантический поиск (русский, лучшее качество) | Qwen3-Embedding-8B или BGE-M3 | SiliconFlow / локально | Бесплатно |
 | Быстрый inference (низкая задержка) | Llama 3.3 70B | Groq | Бесплатный tier |
@@ -209,7 +205,7 @@ Gemini 2.5 Flash:       $0.15 /  $0.60   [.]
 GPT-4o mini:            $0.15 /  $0.60   [.]
 Ollama (локальные):     $0.00 /  $0.00   Бесплатно (нужно железо)
 OpenRouter free tier:   $0.00 /  $0.00   Бесплатно (50 req/day)
-IS Smart:               Flat $2.99/мес    Фиксированная подписка
+
 ```
 
 ---
@@ -223,7 +219,7 @@ IS Smart:               Flat $2.99/мес    Фиксированная подп
 | Подключено (активно) | 16 |
 | Частично подключено | 4 |
 | Не подключено | 14 |
-| Рантаймов активных | 5 (Ollama, Anthropic, OpenRouter, IS Smart, Groq) |
+| Рантаймов активных | 4 (Ollama, Anthropic, OpenRouter, Groq) |
 | Рантаймов доступных | 14 |
 | Бесплатных моделей | 12 (Ollama + free tiers) |
 
@@ -237,7 +233,7 @@ IS Smart:               Flat $2.99/мес    Фиксированная подп
 - [[infra_all_instruments/docs/neural-networks/by-runtime/openrouter__20260210220400-20|Рантайм: OpenRouter]]
 - [[infra_all_instruments/docs/neural-networks/by-runtime/ollama-local__20260210220400-19|Рантайм: Ollama Local]]
 - [[infra_all_instruments/docs/neural-networks/by-runtime/groq__20260213150000-01|Рантайм: Groq]]
-- [[infra_all_instruments/docs/tools/is-smart__20260214210000-01|IS Smart]]
+
 - [[infra_all_instruments/docs/tools/claude-code__20260213150000-01|Claude Code]]
 - [[infra_all_instruments/docs/tools/codex__20260212120000-05|Codex CLI]]
 - [[infra_all_instruments/docs/integrations/api-map__20260210220500-04|Карта API endpoints]]
