@@ -188,7 +188,10 @@ MCP-серверы, доступные через Claude Code, Cursor, Warp, Cla
 | Linear API | - | - | - | V | API Key | V | Project management |
 | Telegram API | - | - | V | V | Token | V | MTProto, Bot API |
 | GigaChat API (Sber) | - | - | V | - | OAuth2 | Лимит | LLM для CreditWise чата |
-| ElevenLabs API | - | - | - | V | API Key | Лимит | Text-to-Speech |
+| ElevenLabs API | - | - | - | V | API Key | Лимит | Text-to-Speech (основной TTS, Flash/Multilingual v3, voice cloning) |
+| OpenAI TTS API | - | - | - | P | API Key (есть) | Лимит | Text-to-Speech (tts-1/tts-1-hd/gpt-4o-mini-tts, $0.015/1K chars, планируется) |
+| Yandex SpeechKit | - | - | - | P | - | Лимит | Text-to-Speech (лучший RU 10/10, $0.003/1K chars, планируется) |
+| Google Cloud TTS | - | - | - | P | API Key (есть) | Лимит | Text-to-Speech (Neural2/Studio, 50+ языков, планируется) |
 | DaData API | V | V | V | V | API Key | 10K/день | Стандартизация адресов, ИНН, ФИО, реквизиты компаний |
 | ФССП API | P | P | P | P | - | ~500/день | Проверка задолженностей по исполнительным производствам (НЕ интегрирован, планируется) |
 | Банк России API | V | V | V | V | - | V | Курсы валют, реестры кредитных организаций, справочники |
