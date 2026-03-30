@@ -80,10 +80,39 @@ criticality: medium
 - [x] Установить fail2ban
 - [x] Отключить root-вход по паролю (`PasswordAuthentication no`, `PermitRootLogin prohibit-password`)
 
+## TIMEWEB API
+
+| Параметр | Значение |
+|----------|----------|
+| Аккаунт | wb950074 |
+| API токен | `/opt/hub/secrets/.env` → `TIMEWEB_API_TOKEN` (дублируется в `~/.openclaw/secrets/timeweb-eu.env`) |
+| Base URL | `https://api.timeweb.cloud/api/v1` |
+| Снэпшот (backup) | `POST /servers/{id}/disks/{diskId}/backups` |
+| disk_id сервера 7048865 | `23705493` |
+
+## УСТАНОВЛЕННОЕ ПО (2026-03-30)
+
+| Компонент | Версия / Путь |
+|-----------|--------------|
+| Claude Code | v2.1.87 → `~/.npm-global/bin/claude` |
+| Bun | v1.3.11 → `~/.bun/bin/bun` |
+| Telegram plugin (Anthropic) | `~/claude-plugins/claude-plugins-official/external_plugins/telegram/` |
+| Инструкция настройки | `~/SETUP_TELEGRAM_PLUGIN.md` |
+
+**Telegram плагин GitHub:** https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/telegram
+
+## СНЭПШОТЫ
+
+| ID | Дата | Комментарий | Статус |
+|----|------|-------------|--------|
+| 85652157 | 2026-03-29 | auto | done |
+| 85733993 | 2026-03-30 | claude-code-telegram-plugin-ready-2026-03-30 | done |
+
 ## ИСТОРИЯ
 
 - 2026-03-20: Первичная настройка VPS. Базовая безопасность, Docker, UFW, fail2ban.
 - 2026-03-20: Hetzner заблокировал аккаунт (санкционный compliance, гражданство РФ). Перешли на Timeweb Cloud.
+- 2026-03-30: Установлен Claude Code + Bun + Telegram plugin. Создан снэпшот 85733993.
 
 ## ЗАМЕТКА: HETZNER
 
