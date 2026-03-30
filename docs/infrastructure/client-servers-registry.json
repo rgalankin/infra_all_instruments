@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "title": "Реестр клиентских серверов",
+    "description": "Серверы, создаваемые для клиентов. Это НЕ наша инфраструктура — серверы в итоге передаются клиентам в собственность.",
+    "source_of_truth": true,
+    "updated": "2026-03-30",
+    "managed_by": "sysadmin_agent"
+  },
+  "clients": [
+    {
+      "id": "nikita-filin",
+      "client": "Никита Филин",
+      "contact": "openclaw_engineer",
+      "servers": [
+        {
+          "name": "nikita-filin-claude",
+          "provider": "timeweb",
+          "location": "nl-1 (Netherlands)",
+          "ip": null,
+          "preset": "2CPU / 4GB RAM / Ubuntu 24.04",
+          "status": "pending_order",
+          "installed": [
+            "claude-code@2.1.87",
+            "bun@1.3.11",
+            "telegram-plugin (anthropics/claude-plugins-official)"
+          ],
+          "ssh_user": "root",
+          "created_at": "2026-03-30",
+          "ownership_transferred": false,
+          "notes": "Ждём предзаказ USA-сервера у Timeweb (nl-1 распродан). Заявка на предзаказ подана 2026-03-30. Шаблон для деплоя: template-claude-telegram-plugin (72.56.24.15)."
+        }
+      ]
+    }
+  ]
+}

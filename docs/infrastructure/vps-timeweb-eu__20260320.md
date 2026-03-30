@@ -32,7 +32,7 @@ criticality: medium
 | Расположение | Rotterdam, South Holland, NL (AS210976 Timeweb, LLP) |
 | Часовой пояс | Europe/Amsterdam |
 | SSH | `ssh roman@72.56.24.15` (ключ ed25519) |
-| Назначение | Определяется (замена Hetzner) |
+| Назначение | **ШАБЛОН для клиентских серверов** (наша инфраструктура) |
 
 ## ДОСТУП
 
@@ -113,6 +113,23 @@ criticality: medium
 - 2026-03-20: Первичная настройка VPS. Базовая безопасность, Docker, UFW, fail2ban.
 - 2026-03-20: Hetzner заблокировал аккаунт (санкционный compliance, гражданство РФ). Перешли на Timeweb Cloud.
 - 2026-03-30: Установлен Claude Code + Bun + Telegram plugin. Создан снэпшот 85733993.
+- 2026-03-30: Переименован в `template-claude-telegram-plugin`. Это шаблон нашей инфраструктуры.
+- 2026-03-30: Тестовые серверы ru-1 (7145443, 7145473) удалены вручную Романом. nl-1/EU/Almaty — распроданы, нет свободных нод. Подан предзаказ на USA у Timeweb.
+
+## РОЛЬ СЕРВЕРА
+
+> ✅ **Это шаблонный сервер нашей инфраструктуры.**
+> Используется как образец для деплоя клиентских серверов.
+> Клиентские серверы: см. `client-servers-registry.json`
+
+**Что установлено на шаблоне:**
+- OpenClaw (marketplace образ)
+- Claude Code v2.1.87 (`~/.npm-global/bin/claude`)
+- Bun v1.3.11 (`~/.bun/bin/bun`)
+- Telegram plugin: `~/claude-plugins/claude-plugins-official/external_plugins/telegram/`
+- Инструкция настройки: `~/SETUP_TELEGRAM_PLUGIN.md`
+
+**Снэпшот шаблона:** ID `85733993` (disk 23705493), создан 2026-03-30, статус `done`
 
 ## ЗАМЕТКА: HETZNER
 
